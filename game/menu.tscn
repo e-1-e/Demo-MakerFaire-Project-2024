@@ -1,0 +1,909 @@
+[gd_scene load_steps=5 format=3 uid="uid://dywaigxqrxt08"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_ur5rd"]
+[ext_resource type="PackedScene" uid="uid://cci1frlmdqavk" path="res://player.tscn" id="1_ywcs5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2yn5"]
+size = Vector2(155, 210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qpv3"]
+size = Vector2(1915, 53)
+
+[node name="Node" type="Node"]
+script = ExtResource("1_ur5rd")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 80.0
+offset_bottom = 272.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 140
+text = "i wanna go on reddit"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 267.0
+offset_right = 2.0
+offset_bottom = 459.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "please Mrs. Cunningham 🥺"
+horizontal_alignment = 1
+
+[node name="DoorsContainer" type="GridContainer" parent="."]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(60, 60)
+layout_direction = 2
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -240.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 32
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect13" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect14" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect15" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect16" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect17" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect18" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect19" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect20" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect21" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect22" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect23" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect24" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect25" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect26" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect27" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect28" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect29" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect30" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect31" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect32" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect34" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect33" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect36" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect35" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect37" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect38" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect39" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect40" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect41" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect42" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect43" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect44" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect45" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect46" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect47" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect48" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect49" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect50" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect51" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect52" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect53" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect54" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect55" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect56" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect57" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect58" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect59" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect60" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect61" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect62" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect63" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect64" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect65" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect66" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect67" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect68" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect69" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect70" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect71" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect72" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect73" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect74" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect75" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect76" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect77" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect78" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect79" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect80" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect81" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect82" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect83" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect84" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect85" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect86" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect87" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect88" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect89" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect90" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect91" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect92" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect93" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect94" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect95" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect96" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect97" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect98" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect99" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect100" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect101" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect102" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect103" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect104" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect105" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect106" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect107" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect108" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect109" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect110" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect111" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect112" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect113" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect114" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect115" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect116" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect117" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect118" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect119" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect120" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect121" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect122" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect123" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect124" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect125" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect126" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="ColorRect127" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.654902, 0.654902, 0.654902, 1)
+
+[node name="ColorRect128" type="ColorRect" parent="DoorsContainer"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="TutorialDoor" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="TutorialDoor"]
+offset_left = 204.0
+offset_top = 870.0
+offset_right = 360.0
+offset_bottom = 1080.0
+color = Color(0.576471, 0.329412, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialDoor"]
+visible = false
+position = Vector2(282, 978)
+shape = SubResource("RectangleShape2D_m2yn5")
+
+[node name="Label" type="Label" parent="TutorialDoor"]
+offset_left = 234.0
+offset_top = 786.0
+offset_right = 333.0
+offset_bottom = 843.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 41
+text = "yes!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameDoor" type="Area2D" parent="."]
+position = Vector2(1374, 6)
+collision_layer = 2
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameDoor"]
+offset_left = 204.0
+offset_top = 870.0
+offset_right = 360.0
+offset_bottom = 1080.0
+color = Color(0.576471, 0.329412, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameDoor"]
+visible = false
+position = Vector2(282, 978)
+shape = SubResource("RectangleShape2D_m2yn5")
+
+[node name="Label" type="Label" parent="GameDoor"]
+offset_left = 210.0
+offset_top = 774.0
+offset_right = 351.0
+offset_bottom = 831.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 41
+text = "nuh uh"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("1_ywcs5")]
+position = Vector2(939, 402)
+collision_layer = 3
+collision_mask = 3
+
+[node name="MainMenuGround" type="StaticBody2D" parent="."]
+position = Vector2(0, 1079)
+
+[node name="ColorRect91" type="ColorRect" parent="MainMenuGround"]
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+offset_right = 1921.0
+offset_bottom = 60.0
+color = Color(0.560784, 0.423529, 0.243137, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainMenuGround"]
+position = Vector2(959.5, 27.5)
+shape = SubResource("RectangleShape2D_2qpv3")
+
+[connection signal="body_entered" from="TutorialDoor" to="." method="_on_tutorial_door_body_entered"]
+[connection signal="body_exited" from="TutorialDoor" to="." method="_on_game_door_body_exited"]
+[connection signal="body_entered" from="GameDoor" to="." method="_on_game_door_body_entered"]
+[connection signal="body_exited" from="GameDoor" to="." method="_on_game_door_body_exited"]
