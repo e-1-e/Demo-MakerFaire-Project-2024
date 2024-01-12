@@ -3,18 +3,22 @@
 [ext_resource type="Script" path="res://player.gd" id="1_ewy3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vm654"]
-size = Vector2(60, 60)
+size = Vector2(47, 47)
 
 [node name="Player" type="CharacterBody2D"]
+top_level = true
+z_index = 3
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ewy3n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 60.0
-offset_bottom = 60.0
+offset_right = 47.0
+offset_bottom = 47.0
 color = Color(0.94902, 0, 0.466667, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(30, 30)
+position = Vector2(23.5, 23.5)
 shape = SubResource("RectangleShape2D_vm654")
+
+[connection signal="death" from="." to="." method="_on_death"]
