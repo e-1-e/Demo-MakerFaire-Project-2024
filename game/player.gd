@@ -20,8 +20,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
-		elif is_on_wall() or is_on_wall_only():
+		elif is_on_wall():
 			velocity.y = 0
+			print($WallDetectorArea.get_overlapping_bodies())
 			
 
 	# Get the input direction and handle the movement/deceleration.
@@ -34,6 +35,8 @@ func _physics_process(delta):
 		velocity.x = direction * newSpeed
 	else:
 		velocity.x = move_toward(velocity.x, 0, newSpeed)
+		
+	velocity *= (0 if is_on_wall() else 1)
 
 	move_and_slide()
 	

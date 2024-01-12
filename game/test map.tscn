@@ -829,4 +829,7 @@ layer_0/tile_data = PackedInt32Array(2293760, 65537, 0, 2293761, 65537, 0, 22937
 position = Vector2(2075.45, 2120)
 shape = SubResource("RectangleShape2D_thj81")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(264, 2154)
+
 [connection signal="body_entered" from="SpikeyArea" to="SpikeyArea" method="_on_body_entered"]

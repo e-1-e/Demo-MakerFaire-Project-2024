@@ -22,7 +22,7 @@ func _process(delta):
 			var newScee = doodoo.instantiate()
 			remove_child(menu)
 			add_child(newScee)
-			$Player.position = Vector2(60, 10)
+			$Player.position = Vector2(264, 2088)
 			
 			inMenu = false
 			
