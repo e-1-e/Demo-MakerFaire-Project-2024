@@ -59,8 +59,12 @@ func _physics_process(delta):
 		if is_on_wall() and check_for_tiles().onWall:
 			print('dis RES')
 			onWall = true
-			velocity.x += newSpeed * (-10 if check_for_tiles().wallDir == 'right' else 10)
-			await get_tree().create_timer(1).timeout
+			velocity.x += newSpeed * (-6.5 if check_for_tiles().wallDir == 'right' else 6.5)
+			for i in range(25):
+				await get_tree().create_timer(0.01).timeout
+				velocity.x *= 0.9
+				velocity.y += -36 * (i+1) + 1350
+				move_and_slide()
 			onWall = false
 
 	move_and_slide()
