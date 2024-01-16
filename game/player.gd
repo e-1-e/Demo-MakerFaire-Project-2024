@@ -62,8 +62,8 @@ func _physics_process(delta):
 			velocity.x += newSpeed * (-6.5 if check_for_tiles().wallDir == 'right' else 6.5)
 			for i in range(25):
 				await get_tree().create_timer(0.01).timeout
-				velocity.x *= 0.9
-				velocity.y += -36 * (i+1) + 1350
+				velocity.x *= 0.8
+				velocity.y -= -30 * (i+1) + 1125
 				move_and_slide()
 			onWall = false
 
