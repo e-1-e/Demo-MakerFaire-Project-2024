@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://icfwwcmxaema"]
+
+[ext_resource type="Script" path="res://testEnemy-Golem.gd" id="1_ixfad"]
+[ext_resource type="Texture2D" uid="uid://cavcypq1v6mkl" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame1.png" id="2_15r2g"]
+[ext_resource type="Texture2D" uid="uid://c2g1s4reejhrt" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame2.png" id="3_m0i6d"]
+[ext_resource type="Texture2D" uid="uid://bsjvnjdeb4wnn" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame3.png" id="4_noduf"]
+[ext_resource type="Texture2D" uid="uid://kh1kvh8mtx6t" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame4.png" id="5_gkc77"]
+[ext_resource type="Texture2D" uid="uid://22o2gk7t38w7" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame5.png" id="6_04opp"]
+[ext_resource type="Texture2D" uid="uid://7add3xosoyl6" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame6.png" id="7_rrfbe"]
+[ext_resource type="Texture2D" uid="uid://csewgjcku47a0" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame7.png" id="8_ur14k"]
+[ext_resource type="Texture2D" uid="uid://bql65gbbpekg3" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame8.png" id="9_skkvl"]
+[ext_resource type="Texture2D" uid="uid://c5fcjoyylx8n7" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame9.png" id="10_oi7o3"]
+[ext_resource type="Texture2D" uid="uid://cl5pyb5olgouj" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame10.png" id="11_vqjm3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7qow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_15r2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m0i6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_noduf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gkc77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_04opp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rrfbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ur14k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_skkvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oi7o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vqjm3")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm654"]
+size = Vector2(38, 36)
+
+[node name="Golem" type="CharacterBody2D"]
+top_level = true
+z_index = 3
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ixfad")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(23.5, 23.75)
+scale = Vector2(0.183594, 0.181641)
+sprite_frames = SubResource("SpriteFrames_c7qow")
+animation = &"new_animation"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Box" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(23, 24)
+shape = SubResource("RectangleShape2D_vm654")
+
+[node name="FatalHitbox" type="Area2D" parent="."]
+position = Vector2(8, 0)
+scale = Vector2(0.7, 1)
+
+[node name="Box" type="CollisionShape2D" parent="FatalHitbox"]
+position = Vector2(23, 7)
+scale = Vector2(1, 0.1)
+shape = SubResource("RectangleShape2D_vm654")
+debug_color = Color(0.917647, 0.219608, 0.454902, 0.419608)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="FatalHitbox" to="." method="_on_fatal_hitbox_body_entered"]

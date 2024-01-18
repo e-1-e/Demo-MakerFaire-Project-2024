@@ -24,6 +24,8 @@ func _process(delta):
 			add_child(newScee)
 			$Player.position = Vector2(264, 2088)
 			
+			newScee.get_node('gameAudio1').play()
+			
 			inMenu = false
 			
 			
@@ -48,6 +50,8 @@ func _on_game_door_body_exited(body):
 
 func _on_player_death():
 	if ($GameMapNode):
+		get_tree().call_group('enemy', 'queue_free')
+		get_tree().call_group('audio', 'queue_free')
 		remove_child($GameMapNode)
 		add_child(menu)
 		inMenu = true

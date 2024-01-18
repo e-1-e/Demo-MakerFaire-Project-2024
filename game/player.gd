@@ -2,8 +2,10 @@ extends CharacterBody2D
 
 signal death
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -1100.0
+@export var health = 5
+
+const SPEED = 1200.0
+const JUMP_VELOCITY = -900.0
 
 var onWall = is_on_wall()
 
@@ -38,9 +40,9 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
-	var newSpeed = SPEED * 2 if Input.is_action_pressed("shift") else SPEED
+	var newSpeed = SPEED / 2 if Input.is_action_pressed("shift") else SPEED
 	
-	var newGravity = gravity if not is_on_wall() else gravity / 3
+	var newGravity = gravity if not is_on_wall() else gravity
 	
 	if not is_on_floor():
 		velocity.y += newGravity * delta
