@@ -30,7 +30,8 @@ func check_for_tiles():
 
 func _physics_process(delta):
 	# Add the gravity.
-	
+	if health == 0:
+		death.emit()
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
@@ -79,3 +80,8 @@ func _on_death():
 	print('vamp anthem! 2')
 	position = Vector2(939, 402)
 	get_owner().get_node('Camera2D').position = Vector2(960, 540)
+	
+func impulse(directio : Vector2):
+	for i in range(10):
+		await get_tree().create_timer(0.05).timeout
+		position += directio/10

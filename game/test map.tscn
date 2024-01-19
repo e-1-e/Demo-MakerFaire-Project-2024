@@ -839,14 +839,14 @@ layer_0/tile_data = PackedInt32Array(2293760, 65537, 0, 2293761, 65537, 0, 22937
 position = Vector2(2075.45, 2120)
 shape = SubResource("RectangleShape2D_thj81")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(264, 2154)
 
 [node name="gameAudio1" type="AudioStreamPlayer" parent="." groups=["audio"]]
 stream = ExtResource("5_1xiwc")
 
 [node name="Golem" parent="." groups=["enemy"] instance=ExtResource("4_570li")]
-position = Vector2(1122, 906)
+position = Vector2(1122, 912)
 scale = Vector2(1.71004, 1.83901)
 
 [node name="enemyPath1" type="Path2D" parent="."]

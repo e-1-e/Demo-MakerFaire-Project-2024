@@ -31,6 +31,12 @@ func _physics_process(delta):
 	move_and_slide()
 '''
 
+'''
+agenda:
+	- knockback player on touch
+	- add additional positional check to player attack
+'''
+
 var prev_rotation
 
 func _physics_process(delta):
@@ -55,10 +61,15 @@ func change_health(change):
 func _on_ready():
 	$AnimatedSprite2D.play("new_animation")
 
+var attackDebounce = false
 
 func _on_hitbox_body_entered(body):
-	if body.name == 'Player':
+	if body.name == 'Player' and not attackDebounce:
+		attackDebounce = true
 		body.health -= 1
+		body.impulse(Vector2(150 * (-1 if scale.x < 0 else 1), -150))
+		await get_tree().create_timer(1).timeout
+		attackDebounce = false
 
 
 func _on_fatal_hitbox_body_entered(body):
