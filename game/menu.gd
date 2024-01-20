@@ -7,6 +7,8 @@ var menu = $Menu
 @export var doodoo : PackedScene
 @export var inMenu = true
 
+var doorDebounce = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print('NEVA TOO MUCH!!!! NEVA TOO MUCH!!!! NEVA TOO MUCH!!!! NEVA TOO MUCH!!!')
@@ -17,7 +19,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_up") and inMenu:
 		print('yeah yeah yeah eyah')
 		print(currentDoor)
-		if currentDoor == 'tutorial':
+		if currentDoor == 'tutorial' and not doorDebounce:
+			doorDebounce = true
 			await get_tree().create_timer(1).timeout
 			var newScee = doodoo.instantiate()
 			remove_child(menu)
@@ -27,6 +30,7 @@ func _process(delta):
 			newScee.get_node('gameAudio1').play()
 			
 			inMenu = false
+			doorDebounce = false
 			
 			
 

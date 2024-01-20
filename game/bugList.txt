@@ -1,0 +1,3 @@
+bug list:
+	- knockback issues
+		- ...wtf do u mean by arc bro... like bottom-left to upper-right or upper-left to bottom-right??? WDYMMM

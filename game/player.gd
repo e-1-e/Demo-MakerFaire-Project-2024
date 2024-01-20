@@ -8,6 +8,7 @@ const SPEED = 1200.0
 const JUMP_VELOCITY = -900.0
 
 var onWall = is_on_wall()
+var anchored = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -35,7 +36,7 @@ func _physics_process(delta):
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
-	if onWall:
+	if onWall and not anchored:
 		velocity.y = 0
 
 	# Get the input direction and handle the movement/deceleration.
@@ -45,32 +46,33 @@ func _physics_process(delta):
 	
 	var newGravity = gravity if not is_on_wall() else gravity
 	
-	if not is_on_floor():
-		velocity.y += newGravity * delta
-	
-	if direction and not onWall:
-		velocity.x = direction * newSpeed
-	elif not onWall:
-		velocity.x = move_toward(velocity.x, 0, newSpeed)
+	if not anchored:
+		if not is_on_floor():
+			velocity.y += newGravity * delta
 		
-	#velocity *= (0 if (is_on_wall() and check_for_tiles().onWall and (Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"))) else 1)
-	
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept"):
-		if is_on_floor():
-			velocity.y = JUMP_VELOCITY
-		if is_on_wall() and check_for_tiles().onWall:
-			print('dis RES')
-			onWall = true
-			velocity.x += newSpeed * (-6.5 if check_for_tiles().wallDir == 'right' else 6.5)
-			for i in range(25):
-				await get_tree().create_timer(0.01).timeout
-				velocity.x *= 0.8
-				velocity.y -= -30 * (i+1) + 1125
-				move_and_slide()
-			onWall = false
-
-	move_and_slide()
+		if direction and not onWall:
+			velocity.x = direction * newSpeed
+		elif not onWall:
+			velocity.x = move_toward(velocity.x, 0, newSpeed)
+			
+		#velocity *= (0 if (is_on_wall() and check_for_tiles().onWall and (Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"))) else 1)
+		
+		# Handle jump.
+		if Input.is_action_just_pressed("ui_accept"):
+			if is_on_floor():
+				velocity.y = JUMP_VELOCITY
+			if is_on_wall() and check_for_tiles().onWall:
+				print('dis RES')
+				onWall = true
+				velocity.x += newSpeed * (-6.5 if check_for_tiles().wallDir == 'right' else 6.5)
+				for i in range(25):
+					await get_tree().create_timer(0.01).timeout
+					velocity.x *= 0.8
+					velocity.y -= -30 * (i+1) + 1125
+					move_and_slide()
+				onWall = false
+				
+		move_and_slide()
 	
 	if not get_owner().inMenu:
 		get_owner().get_node('Camera2D').position = position
@@ -81,7 +83,13 @@ func _on_death():
 	position = Vector2(939, 402)
 	get_owner().get_node('Camera2D').position = Vector2(960, 540)
 	
-func impulse(directio : Vector2):
-	for i in range(10):
-		await get_tree().create_timer(0.05).timeout
-		position += directio/10
+func impulse(directio : Vector2):	
+	anchored = true
+	velocity = directio
+	print(directio)
+	print(velocity)
+	
+	for i in range(30):
+		move_and_slide()
+		await get_tree().create_timer(0.01).timeout
+	anchored = false

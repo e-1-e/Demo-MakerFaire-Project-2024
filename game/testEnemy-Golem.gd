@@ -67,11 +67,13 @@ func _on_hitbox_body_entered(body):
 	if body.name == 'Player' and not attackDebounce:
 		attackDebounce = true
 		body.health -= 1
-		body.impulse(Vector2(150 * (-1 if scale.x < 0 else 1), -150))
+		body.impulse(Vector2(450 * (-1 if scale.x > 0 else 1), -450))
 		await get_tree().create_timer(1).timeout
 		attackDebounce = false
 
 
 func _on_fatal_hitbox_body_entered(body):
-	if body.name == 'Player':
+	if body.name == 'Player' and not attackDebounce:
+		attackDebounce = true
 		change_health(1)
+		attackDebounce = false

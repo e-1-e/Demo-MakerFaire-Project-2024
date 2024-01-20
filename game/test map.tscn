@@ -844,6 +844,7 @@ position = Vector2(264, 2154)
 
 [node name="gameAudio1" type="AudioStreamPlayer" parent="." groups=["audio"]]
 stream = ExtResource("5_1xiwc")
+volume_db = -80.0
 
 [node name="Golem" parent="." groups=["enemy"] instance=ExtResource("4_570li")]
 position = Vector2(1122, 912)
