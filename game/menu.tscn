@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dywaigxqrxt08"]
+[gd_scene load_steps=7 format=3 uid="uid://dywaigxqrxt08"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_ur5rd"]
 [ext_resource type="PackedScene" uid="uid://cci1frlmdqavk" path="res://player.tscn" id="1_ywcs5"]
 [ext_resource type="PackedScene" uid="uid://b4eh1ac6occ5b" path="res://test map.tscn" id="2_4g8y5"]
+[ext_resource type="PackedScene" uid="uid://cay8pxowj1b8w" path="res://Level 1.tscn" id="3_ymnv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2yn5"]
 size = Vector2(155, 210)
@@ -12,7 +13,8 @@ size = Vector2(1915, 53)
 
 [node name="Node" type="Node"]
 script = ExtResource("1_ur5rd")
-doodoo = ExtResource("2_4g8y5")
+TutorialLevel = ExtResource("2_4g8y5")
+GameLevel = ExtResource("3_ymnv5")
 
 [node name="Menu" type="Node" parent="."]
 

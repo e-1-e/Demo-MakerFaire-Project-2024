@@ -4,7 +4,8 @@ var currentDoor = null
 @onready
 var menu = $Menu
 
-@export var doodoo : PackedScene
+@export var TutorialLevel : PackedScene
+@export var GameLevel : PackedScene
 @export var inMenu = true
 
 var doorDebounce = false
@@ -22,12 +23,25 @@ func _process(delta):
 		if currentDoor == 'tutorial' and not doorDebounce:
 			doorDebounce = true
 			await get_tree().create_timer(1).timeout
-			var newScee = doodoo.instantiate()
+			var newScee = TutorialLevel.instantiate()
 			remove_child(menu)
 			add_child(newScee)
-			$Player.position = Vector2(264, 2088)
+			$Player.position = newScee.get_node('PlayerSpawn').position
 			
 			newScee.get_node('gameAudio1').play()
+			
+			inMenu = false
+			doorDebounce = false
+			
+		if currentDoor == 'game' and not doorDebounce:
+			doorDebounce = true
+			await get_tree().create_timer(1).timeout
+			var newScee = GameLevel.instantiate()
+			remove_child(menu)
+			add_child(newScee)
+			$Player.position = newScee.get_node('PlayerSpawn').position
+			
+			newScee.get_node('gameAudio1').play() #WILL CHANGE LATER. LMK WHEN U WANNA ADD AUDIO.
 			
 			inMenu = false
 			doorDebounce = false

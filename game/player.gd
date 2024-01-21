@@ -72,6 +72,14 @@ func _physics_process(delta):
 					move_and_slide()
 				onWall = false
 				
+		if Input.is_action_just_pressed("testKey"): #shift + B
+			print("----+++ DEBUG PLAYER INFO +++---- 🏁")
+			print("VELOCITY: " + str(velocity))
+			print("CURRENT newSpeed: " + str(newSpeed))
+			print("CURRENT newGravity: " + str(newGravity))
+			print("anchored?: " + str(anchored))
+			print("CURRENT newSpeed: " + str(newSpeed))
+			print("CURRENT health: " + str(health))
 		move_and_slide()
 	
 	if not get_owner().inMenu:
@@ -82,14 +90,32 @@ func _on_death():
 	print('vamp anthem! 2')
 	position = Vector2(939, 402)
 	get_owner().get_node('Camera2D').position = Vector2(960, 540)
+	health = 5
 	
-func impulse(directio : Vector2):	
+	
+func arcFunc(startingPoint : Vector2, endPoint : Vector2, delta : float):
+	print('DELTA... ' + str(delta))
+	var change = (endPoint.x - startingPoint.x) * delta
+	return -((endPoint.y - startingPoint.y)/(endPoint.x - startingPoint.x)) * sqrt(-(change**2) + (endPoint.x - startingPoint.x)**2) + (endPoint.y-startingPoint.y)
+	
+#ik, this is stupid, but i cant do nested funcs for no reason
+func impulse(directio : Vector2):
+	if anchored:
+		return
+		
 	anchored = true
-	velocity = directio
-	print(directio)
-	print(velocity)
+	var endPos = position + directio
 	
-	for i in range(30):
+	var start = position
+	
+	for i in 10:
+		velocity.x = (endPos.x - position.x)
+		velocity.y = arcFunc(start, endPos, float(i+1)/10.0) * 1.35
+		print('LOG: ' + str(i))
+		print(velocity.y)
+		
+		velocity *= 3
+		
 		move_and_slide()
 		await get_tree().create_timer(0.01).timeout
 	anchored = false

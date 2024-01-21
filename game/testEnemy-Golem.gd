@@ -42,8 +42,10 @@ var prev_rotation
 func _physics_process(delta):
 	if get_owner() == null or health == 0:
 		return null
+		
 	
 	position = get_owner().get_node('enemyPath1').get_node('PathFollow2D').position
+	print(position)
 	get_owner().get_node('enemyPath1').get_node('PathFollow2D').progress_ratio += 0.001
 	
 	if get_owner().get_node('enemyPath1').get_node('PathFollow2D').rotation != prev_rotation:
