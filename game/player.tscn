@@ -1,33 +1,102 @@
-[gd_scene load_steps=4 format=3 uid="uid://cci1frlmdqavk"]
+[gd_scene load_steps=13 format=3 uid="uid://cci1frlmdqavk"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ewy3n"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm654"]
-size = Vector2(47, 47)
+[ext_resource type="Texture2D" uid="uid://omatnirsdorm" path="res://assets/player/1-22-24- funny blue dude - Frame1.png" id="2_tghih"]
+[ext_resource type="Texture2D" uid="uid://cwhngky8k1n0h" path="res://assets/player/1-22-24- funny blue dude - Frame2.png" id="3_rbt3m"]
+[ext_resource type="Texture2D" uid="uid://qxbdchs6b1af" path="res://assets/player/1-22-24- funny blue dude - Frame3.png" id="4_5t215"]
+[ext_resource type="Texture2D" uid="uid://jcp5tml8ij6c" path="res://assets/player/1-22-24- funny blue dude - Frame4.png" id="5_3w81s"]
+[ext_resource type="Texture2D" uid="uid://b86qfe5gmyv17" path="res://assets/player/1-22-24- funny blue dude - Frame5.png" id="6_megtr"]
+[ext_resource type="Texture2D" uid="uid://cx23nbpapkmf7" path="res://assets/player/1-22-24- funny blue dude - Frame6.png" id="7_c40k8"]
+[ext_resource type="Texture2D" uid="uid://c8tmqumkm3yu3" path="res://assets/player/1-22-24- funny blue dude - Frame7.png" id="8_y0vnx"]
+[ext_resource type="Texture2D" uid="uid://b1ygcusiraujx" path="res://assets/player/1-22-24- funny blue dude - Frame8.png" id="9_7x24t"]
+[ext_resource type="Script" path="res://Sprite.gd" id="10_mmygf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ro1y"]
-size = Vector2(82, 18)
+size = Vector2(22.0904, 8.55391)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_neexp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tghih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rbt3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5t215")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3w81s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_megtr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c40k8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y0vnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7x24t")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 top_level = true
 z_index = 3
+scale = Vector2(1, 1.018)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ewy3n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 47.0
-offset_bottom = 47.0
+offset_left = 7.0
+offset_top = 3.92927
+offset_right = 39.0
+offset_bottom = 50.9293
+scale = Vector2(0.979333, 0.865225)
 color = Color(0.94902, 0, 0.466667, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(23.5, 23.5)
-shape = SubResource("RectangleShape2D_vm654")
+[node name="WallDetectorAreaTL" type="Area2D" parent="."]
+position = Vector2(4, 5.89391)
+scale = Vector2(1.04326, 2.78752)
 
-[node name="WallDetectorArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="WallDetectorArea"]
-position = Vector2(22, 9)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WallDetectorAreaTL"]
+position = Vector2(7.21107, 2.15071)
 shape = SubResource("RectangleShape2D_2ro1y")
+
+[node name="WallDetectorAreaTR" type="Area2D" parent="."]
+position = Vector2(27, -0.982318)
+scale = Vector2(1.0822, 2.73313)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WallDetectorAreaTR"]
+position = Vector2(7.08177, 4.70833)
+shape = SubResource("RectangleShape2D_2ro1y")
+
+[node name="StompDetector" type="Area2D" parent="."]
+position = Vector2(13, 36.3458)
+scale = Vector2(1.39442, 0.986713)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StompDetector"]
+position = Vector2(7.08177, 4.70833)
+shape = SubResource("RectangleShape2D_2ro1y")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(26.4359, 21.9474)
+scale = Vector2(0.211487, 0.181902)
+sprite_frames = SubResource("SpriteFrames_neexp")
+animation = &"walk"
+frame_progress = 0.207865
+script = ExtResource("10_mmygf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-0.00853876, -1.07831)
+scale = Vector2(1.16696, 0.970478)
+polygon = PackedVector2Array(21, 5, 25, 6, 27, 7, 28, 8, 33, 13, 33, 32, 32, 40, 32, 47, 24, 47, 23, 44, 18, 44, 17, 47, 10, 47, 10, 44, 7, 37, 6.11221, 30.9778, 6, 22, 7, 20, 8, 17, 8, 14, 10, 12, 10, 11, 11, 9, 13, 8, 16, 6)
 
 [connection signal="death" from="." to="." method="_on_death"]

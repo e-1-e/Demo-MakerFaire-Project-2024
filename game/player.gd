@@ -21,12 +21,12 @@ func check_for_tiles():
 		}
 	
 	var tileMap = get_owner().get_node('GameMapNode').get_node('TileMap')
-	var tile1 = tileMap.get_cell_tile_data(0, tileMap.local_to_map(tileMap.to_local(position)) + Vector2i(1, 0))
-	var tile2 = tileMap.get_cell_tile_data(0, tileMap.local_to_map(tileMap.to_local(position)) - Vector2i(1, 0))
+	var tile1 = $WallDetectorAreaTL.get_overlapping_bodies().has(tileMap)
+	var tile2 = $WallDetectorAreaTR.get_overlapping_bodies().has(tileMap)
 	
 	return {
-		onWall = (tile1 != null) or (tile2 != null),
-		wallDir = null if not (tile1 != null) or (tile2 != null) else ('right' if tile1 != null else 'left')
+		onWall = (tile1 != false) or (tile2 != false),
+		wallDir = null if (tile1 == false) and (tile2 == false) else ('right' if tile1 != true else 'left')
 	}
 
 func _physics_process(delta):
@@ -80,6 +80,7 @@ func _physics_process(delta):
 			print("anchored?: " + str(anchored))
 			print("CURRENT newSpeed: " + str(newSpeed))
 			print("CURRENT health: " + str(health))
+			print("CURRENT collisions: " + str($WallDetectorAreaTL.get_overlapping_bodies()))
 		move_and_slide()
 	
 	if not get_owner().inMenu:

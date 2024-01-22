@@ -842,7 +842,7 @@ position = Vector2(2075.45, 2120)
 shape = SubResource("RectangleShape2D_thj81")
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(264, 2154)
+position = Vector2(270, 1968)
 
 [node name="gameAudio1" type="AudioStreamPlayer" parent="." groups=["audio"]]
 stream = ExtResource("5_2c7bn")
@@ -857,9 +857,9 @@ position = Vector2(-6, 1812)
 curve = SubResource("Curve2D_62s04")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="enemyPath1"]
-position = Vector2(1074.93, -1697.65)
-rotation = 0.0143875
-progress = 852.0
+position = Vector2(1326.94, 1832.81)
+rotation = 3.10589
+progress = 614.624
 v_offset = -1770.0
 
 [connection signal="body_entered" from="SpikeyArea" to="SpikeyArea" method="_on_body_entered"]

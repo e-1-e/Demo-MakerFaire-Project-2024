@@ -45,7 +45,7 @@ func _physics_process(delta):
 		
 	
 	position = get_owner().get_node('enemyPath1').get_node('PathFollow2D').position
-	print(position)
+	#print(position)
 	get_owner().get_node('enemyPath1').get_node('PathFollow2D').progress_ratio += 0.001
 	
 	if get_owner().get_node('enemyPath1').get_node('PathFollow2D').rotation != prev_rotation:
@@ -78,4 +78,5 @@ func _on_fatal_hitbox_body_entered(body):
 	if body.name == 'Player' and not attackDebounce:
 		attackDebounce = true
 		change_health(1)
-		attackDebounce = false
+		if health > 0:
+			attackDebounce = false
