@@ -10,5 +10,6 @@ func _ready():
 func _process(delta):
 	if get_owner().velocity.length() > 0:
 		play("walk")
+		flip_h = get_owner().velocity.x < 0
 	else:
 		stop()

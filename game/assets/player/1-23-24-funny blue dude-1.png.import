@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b86qfe5gmyv17"
-path="res://.godot/imported/1-22-24- funny blue dude - Frame5.png-bf9aec8298d89fc9873f3dbcd343710b.ctex"
+uid="uid://bl5w7m7g53345"
+path="res://.godot/imported/1-23-24-funny blue dude-1.png-cff19cb380ffa2546256cb9cd37ee0c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/1-22-24- funny blue dude - Frame5.png"
-dest_files=["res://.godot/imported/1-22-24- funny blue dude - Frame5.png-bf9aec8298d89fc9873f3dbcd343710b.ctex"]
+source_file="res://assets/player/1-23-24-funny blue dude-1.png"
+dest_files=["res://.godot/imported/1-23-24-funny blue dude-1.png-cff19cb380ffa2546256cb9cd37ee0c2.ctex"]
 
 [params]
 

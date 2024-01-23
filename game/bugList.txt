@@ -1,1 +1,2 @@
 bug list:
+	-gravity isn't constant

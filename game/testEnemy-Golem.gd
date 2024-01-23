@@ -56,6 +56,8 @@ func _physics_process(delta):
 	prev_rotation = get_owner().get_node('enemyPath1').get_node('PathFollow2D').rotation
 
 func change_health(change):
+	if attackDebounce: return null
+	
 	health -= change
 	if health <= 0:
 		queue_free()
@@ -67,16 +69,28 @@ var attackDebounce = false
 
 func _on_hitbox_body_entered(body):
 	if body.name == 'Player' and not attackDebounce:
+		print(body.position.y > position.y)
+		print("TELL ME LIL UZI VERT WHY YOU SO DOPE")
+		
+		if health <= 0:
+			return null
+		
 		attackDebounce = true
 		body.health -= 1
-		body.impulse(Vector2(450 * (-1 if scale.x > 0 else 1), -450))
-		await get_tree().create_timer(1).timeout
+		body.impulse(Vector2(150 * (-1 if scale.x > 0 else 1), -150))
+		await get_tree().create_timer(2).timeout
 		attackDebounce = false
 
 
+'''
 func _on_fatal_hitbox_body_entered(body):
 	if body.name == 'Player' and not attackDebounce:
+		print(body.get_node('StompDetector').get_overlapping_bodies())
+		if not body.get_node('StompDetector').get_overlapping_bodies().has(self):
+			return
+		
 		attackDebounce = true
 		change_health(1)
 		if health > 0:
 			attackDebounce = false
+'''

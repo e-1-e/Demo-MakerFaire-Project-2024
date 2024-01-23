@@ -64,12 +64,15 @@ func _physics_process(delta):
 			if is_on_wall() and check_for_tiles().onWall:
 				print('dis RES')
 				onWall = true
-				velocity.x += newSpeed * (-6.5 if check_for_tiles().wallDir == 'right' else 6.5)
-				for i in range(25):
-					await get_tree().create_timer(0.01).timeout
-					velocity.x *= 0.8
-					velocity.y -= -30 * (i+1) + 1125
-					move_and_slide()
+				if not $StompDetector.has_overlapping_bodies():
+					velocity.x += newSpeed * (-1.5 if check_for_tiles().wallDir == 'right' else 1.5)
+					for i in range(25):
+						await get_tree().create_timer(0.01).timeout
+						velocity.x *= 0.87
+						velocity.y -= -25 * (i+1) + 937.5
+						move_and_slide()
+				else:
+					print("slatt! slatt! slatt! slatt!")
 				onWall = false
 				
 		if Input.is_action_just_pressed("testKey"): #shift + B
@@ -95,7 +98,6 @@ func _on_death():
 	
 	
 func arcFunc(startingPoint : Vector2, endPoint : Vector2, delta : float):
-	print('DELTA... ' + str(delta))
 	var change = (endPoint.x - startingPoint.x) * delta
 	return -((endPoint.y - startingPoint.y)/(endPoint.x - startingPoint.x)) * sqrt(-(change**2) + (endPoint.x - startingPoint.x)**2) + (endPoint.y-startingPoint.y)
 	
@@ -112,11 +114,18 @@ func impulse(directio : Vector2):
 	for i in 10:
 		velocity.x = (endPos.x - position.x)
 		velocity.y = arcFunc(start, endPos, float(i+1)/10.0) * 1.35
-		print('LOG: ' + str(i))
-		print(velocity.y)
 		
 		velocity *= 3
 		
 		move_and_slide()
 		await get_tree().create_timer(0.01).timeout
 	anchored = false
+
+
+func _on_stomp_detector_body_entered(body):
+	print('tell me....')
+	print(body)
+	print(get_tree().get_nodes_in_group('enemy'))
+	
+	if body in get_tree().get_nodes_in_group('enemy') and not anchored:
+		body.change_health(1)

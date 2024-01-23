@@ -1,45 +1,48 @@
-[gd_scene load_steps=13 format=3 uid="uid://cci1frlmdqavk"]
+[gd_scene load_steps=14 format=3 uid="uid://cci1frlmdqavk"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ewy3n"]
-[ext_resource type="Texture2D" uid="uid://omatnirsdorm" path="res://assets/player/1-22-24- funny blue dude - Frame1.png" id="2_tghih"]
-[ext_resource type="Texture2D" uid="uid://cwhngky8k1n0h" path="res://assets/player/1-22-24- funny blue dude - Frame2.png" id="3_rbt3m"]
-[ext_resource type="Texture2D" uid="uid://qxbdchs6b1af" path="res://assets/player/1-22-24- funny blue dude - Frame3.png" id="4_5t215"]
-[ext_resource type="Texture2D" uid="uid://jcp5tml8ij6c" path="res://assets/player/1-22-24- funny blue dude - Frame4.png" id="5_3w81s"]
-[ext_resource type="Texture2D" uid="uid://b86qfe5gmyv17" path="res://assets/player/1-22-24- funny blue dude - Frame5.png" id="6_megtr"]
-[ext_resource type="Texture2D" uid="uid://cx23nbpapkmf7" path="res://assets/player/1-22-24- funny blue dude - Frame6.png" id="7_c40k8"]
-[ext_resource type="Texture2D" uid="uid://c8tmqumkm3yu3" path="res://assets/player/1-22-24- funny blue dude - Frame7.png" id="8_y0vnx"]
-[ext_resource type="Texture2D" uid="uid://b1ygcusiraujx" path="res://assets/player/1-22-24- funny blue dude - Frame8.png" id="9_7x24t"]
+[ext_resource type="Texture2D" uid="uid://bl5w7m7g53345" path="res://assets/player/1-23-24-funny blue dude-1.png" id="2_7d0xe"]
+[ext_resource type="Texture2D" uid="uid://bw86p15cdh85t" path="res://assets/player/1-23-24-funny blue dude-2.png" id="3_fjru0"]
+[ext_resource type="Texture2D" uid="uid://b1uk8fpw15hsn" path="res://assets/player/1-23-24-funny blue dude-3.png" id="4_78vyh"]
+[ext_resource type="Texture2D" uid="uid://dpw5fe2frnydi" path="res://assets/player/1-23-24-funny blue dude-4.png" id="5_100a2"]
+[ext_resource type="Texture2D" uid="uid://dy8np00jh6y5o" path="res://assets/player/1-23-24-funny blue dude-5.png" id="6_g0ccq"]
+[ext_resource type="Texture2D" uid="uid://ieauw45xjvty" path="res://assets/player/1-23-24-funny blue dude-6.png" id="7_dha2g"]
+[ext_resource type="Texture2D" uid="uid://cqbf8c147fbe6" path="res://assets/player/1-23-24-funny blue dude-7.png" id="8_rpxuf"]
+[ext_resource type="Texture2D" uid="uid://xw43w8ciqqp0" path="res://assets/player/1-23-24-funny blue dude-8.png" id="9_c4hm8"]
 [ext_resource type="Script" path="res://Sprite.gd" id="10_mmygf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ro1y"]
 size = Vector2(22.0904, 8.55391)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8lfp"]
+size = Vector2(16, 4.20532)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_neexp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_tghih")
+"texture": ExtResource("2_7d0xe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_rbt3m")
+"texture": ExtResource("3_fjru0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_5t215")
+"texture": ExtResource("4_78vyh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_3w81s")
+"texture": ExtResource("5_100a2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_megtr")
+"texture": ExtResource("6_g0ccq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_c40k8")
+"texture": ExtResource("7_dha2g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_y0vnx")
+"texture": ExtResource("8_rpxuf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_7x24t")
+"texture": ExtResource("9_c4hm8")
 }],
 "loop": true,
 "name": &"walk",
@@ -79,16 +82,19 @@ position = Vector2(7.08177, 4.70833)
 shape = SubResource("RectangleShape2D_2ro1y")
 
 [node name="StompDetector" type="Area2D" parent="."]
-position = Vector2(13, 36.3458)
-scale = Vector2(1.39442, 0.986713)
+position = Vector2(12, 36.3458)
+scale = Vector2(1.45966, 1.16789)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StompDetector"]
-position = Vector2(7.08177, 4.70833)
-shape = SubResource("RectangleShape2D_2ro1y")
+position = Vector2(8.22109, 8.83148)
+shape = SubResource("RectangleShape2D_j8lfp")
+debug_color = Color(0.572549, 0.541176, 0.341176, 0.419608)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(26.4359, 21.9474)
-scale = Vector2(0.211487, 0.181902)
+position = Vector2(23, 24.0668)
+scale = Vector2(0.196319, 0.172854)
 sprite_frames = SubResource("SpriteFrames_neexp")
 animation = &"walk"
 frame_progress = 0.207865
@@ -100,3 +106,4 @@ scale = Vector2(1.16696, 0.970478)
 polygon = PackedVector2Array(21, 5, 25, 6, 27, 7, 28, 8, 33, 13, 33, 32, 32, 40, 32, 47, 24, 47, 23, 44, 18, 44, 17, 47, 10, 47, 10, 44, 7, 37, 6.11221, 30.9778, 6, 22, 7, 20, 8, 17, 8, 14, 10, 12, 10, 11, 11, 9, 13, 8, 16, 6)
 
 [connection signal="death" from="." to="." method="_on_death"]
+[connection signal="body_entered" from="StompDetector" to="." method="_on_stomp_detector_body_entered"]
