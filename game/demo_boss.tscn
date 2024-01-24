@@ -1,0 +1,97 @@
+[gd_scene load_steps=18 format=3 uid="uid://b42lgxkb3ff4a"]
+
+[ext_resource type="Texture2D" uid="uid://ddkwx7372fpc5" path="res://assets/demo_boss/1-24-24-DemoBoss-LegWalk1.png" id="1_aw1yk"]
+[ext_resource type="Script" path="res://demo_boss.gd" id="1_u22d5"]
+[ext_resource type="Texture2D" uid="uid://cnooxh2iwo4q0" path="res://assets/demo_boss/1-24-24-DemoBoss-LegWalk2.png" id="2_2a81k"]
+[ext_resource type="PackedScene" uid="uid://bmrs3sf3yc1py" path="res://projectile.tscn" id="2_pcuiv"]
+[ext_resource type="Texture2D" uid="uid://3410lasywg7t" path="res://assets/demo_boss/1-24-24-DemoBoss-LegWalk3.png" id="3_pthl1"]
+[ext_resource type="Texture2D" uid="uid://d4barhtanbi1n" path="res://assets/demo_boss/1-24-24-DemoBoss-LegWalk4.png" id="4_ixwco"]
+[ext_resource type="Texture2D" uid="uid://cu7sper3lc47p" path="res://assets/demo_boss/1-24-24-DemoBoss-LegWalk5.png" id="5_vdsbr"]
+[ext_resource type="Texture2D" uid="uid://cndecfj1tg6vr" path="res://assets/demo_boss/1-24-24-DemoBoss-LegWalk6.png" id="6_uyqel"]
+[ext_resource type="Texture2D" uid="uid://becfi7l1kf1a8" path="res://assets/demo_boss/1-24-24-DemoBoss-LegWalk7.png" id="7_0t145"]
+[ext_resource type="Texture2D" uid="uid://n2akmmdcjkg" path="res://assets/demo_boss/1-24-24-DemoBoss-LegWalk8.png" id="8_hggrq"]
+[ext_resource type="Texture2D" uid="uid://fnthm58mo6s3" path="res://assets/demo_boss/1-24-24-DemoBoss-Idle1.png" id="9_v80ly"]
+[ext_resource type="Texture2D" uid="uid://c36m87tyqlly0" path="res://assets/demo_boss/1-24-24-DemoBoss-Idle2.png" id="10_fpxsj"]
+[ext_resource type="Texture2D" uid="uid://8ssgpgugo5dn" path="res://assets/demo_boss/1-24-24-DemoBoss-Punch1.png" id="11_cutc6"]
+[ext_resource type="Texture2D" uid="uid://q4o3c1766wno" path="res://assets/demo_boss/1-24-24-DemoBoss-Punch2.png" id="12_4g3gg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ollfv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aw1yk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2a81k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pthl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ixwco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vdsbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uyqel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0t145")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hggrq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vfqrw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_v80ly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fpxsj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_cutc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4g3gg")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtfr8"]
+size = Vector2(53, 56)
+
+[node name="DemoBoss" type="CharacterBody2D"]
+scale = Vector2(1.4, 1.4)
+script = ExtResource("1_u22d5")
+projecty = ExtResource("2_pcuiv")
+
+[node name="LegSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ollfv")
+animation = &"walk"
+frame_progress = 0.877223
+speed_scale = -1.0
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vfqrw")
+animation = &"idle"
+frame_progress = 0.642792
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_rtfr8")

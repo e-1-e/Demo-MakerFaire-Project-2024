@@ -9,4 +9,6 @@ func _ready():
 func _process(delta):
 	pass
 	
-
+func wake():
+	print('LAO UZI!!!!!!!!!!!!!!!!!!	')
+	$DemoBoss.awake = true

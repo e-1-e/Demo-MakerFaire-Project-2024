@@ -127,5 +127,5 @@ func _on_stomp_detector_body_entered(body):
 	print(body)
 	print(get_tree().get_nodes_in_group('enemy'))
 	
-	if body in get_tree().get_nodes_in_group('enemy') and not anchored:
+	if body in get_tree().get_nodes_in_group('enemy') and not anchored and to_global($StompDetector.position).y < body.position.y:
 		body.change_health(1)

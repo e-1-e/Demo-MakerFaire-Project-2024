@@ -28,6 +28,8 @@ func _process(delta):
 			add_child(newScee)
 			$Player.position = newScee.get_node('PlayerSpawn').position
 			
+			newScee.wake()
+			
 			newScee.get_node('gameAudio1').play()
 			
 			inMenu = false

@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://cay8pxowj1b8w"]
+[gd_scene load_steps=13 format=3 uid="uid://cay8pxowj1b8w"]
 
-[ext_resource type="Script" path="res://test map.gd" id="1_rvo37"]
 [ext_resource type="Texture2D" uid="uid://bx70sv0n0eus0" path="res://assets/1-11-24-SampleTextBG.png" id="2_7763o"]
 [ext_resource type="Texture2D" uid="uid://c8ehhigf73bqg" path="res://assets/1-11-24-SpriteSheetSample2.png" id="3_37mmr"]
 [ext_resource type="Script" path="res://killbrick.gd" id="4_ks4ya"]
@@ -804,7 +803,6 @@ _data = {
 point_count = 4
 
 [node name="GameMapNode" type="Node"]
-script = ExtResource("1_rvo37")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false

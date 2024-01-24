@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmrs3sf3yc1py"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgfrm"]
+size = Vector2(1.48187, 1.41389)
+
+[node name="Projectile" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.584975, 0.220445)
+
+[node name="HeatSeeker" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeatSeeker"]
+position = Vector2(11.7849, 4.26878)
+rotation = -3.14159
+scale = Vector2(16.486, -6.69249)
+shape = SubResource("RectangleShape2D_pgfrm")

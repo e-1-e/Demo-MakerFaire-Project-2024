@@ -58,6 +58,7 @@ collision_mask = 2
 script = ExtResource("1_ewy3n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = 7.0
 offset_top = 3.92927
 offset_right = 39.0
