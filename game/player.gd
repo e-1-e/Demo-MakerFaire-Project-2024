@@ -88,6 +88,7 @@ func _physics_process(delta):
 	
 	if not get_owner().inMenu:
 		get_owner().get_node('Camera2D').position = position
+		get_owner().get_node('GuiContainer').position = position - get_viewport_rect().size/2
 
 
 func _on_death():
@@ -95,6 +96,16 @@ func _on_death():
 	position = Vector2(939, 402)
 	get_owner().get_node('Camera2D').position = Vector2(960, 540)
 	health = 5
+	changeHealth(0)
+	
+func changeHealth(change):
+	health -= change
+	print(health)
+	for i in range(1, 6):
+		print(health >= i)
+		print(i)
+		print('YEAH I TOLD U UH BOUT THAT MONEY')
+		get_owner().get_node('GuiContainer').get_node('HeartGrid').get_node('TextureRect' + str(i)).visible = health >= i
 	
 	
 func arcFunc(startingPoint : Vector2, endPoint : Vector2, delta : float):

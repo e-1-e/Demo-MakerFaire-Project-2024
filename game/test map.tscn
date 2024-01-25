@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4eh1ac6occ5b"]
+[gd_scene load_steps=15 format=3 uid="uid://b4eh1ac6occ5b"]
 
 [ext_resource type="Script" path="res://test map.gd" id="1_d4in8"]
 [ext_resource type="Texture2D" uid="uid://bx70sv0n0eus0" path="res://assets/1-11-24-SampleTextBG.png" id="1_oacg6"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://killbrick.gd" id="3_emapb"]
 [ext_resource type="PackedScene" uid="uid://icfwwcmxaema" path="res://testEnemy-Golem.tscn" id="4_570li"]
 [ext_resource type="AudioStream" uid="uid://b77rni0nus1su" path="res://1 17 24 (1).wav" id="5_1xiwc"]
-[ext_resource type="Texture2D" uid="uid://dy8np00jh6y5o" path="res://assets/player/1-23-24-funny blue dude-5.png" id="7_jb86q"]
 [ext_resource type="PackedScene" uid="uid://b42lgxkb3ff4a" path="res://demo_boss.tscn" id="8_j4pmm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65vlb"]
@@ -860,48 +859,6 @@ curve = SubResource("Curve2D_62s04")
 [node name="PathFollow2D" type="PathFollow2D" parent="enemyPath1"]
 position = Vector2(1872, 906)
 rotation = 3.14159
-
-[node name="GuiContainer" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="HeartGrid" type="GridContainer" parent="GuiContainer"]
-layout_direction = 2
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -114.0
-offset_bottom = 119.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-localize_numeral_system = false
-columns = 999
-
-[node name="TextureRect" type="TextureRect" parent="GuiContainer/HeartGrid"]
-layout_mode = 2
-texture = ExtResource("7_jb86q")
-
-[node name="TextureRect2" type="TextureRect" parent="GuiContainer/HeartGrid"]
-layout_mode = 2
-texture = ExtResource("7_jb86q")
-
-[node name="TextureRect3" type="TextureRect" parent="GuiContainer/HeartGrid"]
-layout_mode = 2
-texture = ExtResource("7_jb86q")
-
-[node name="TextureRect4" type="TextureRect" parent="GuiContainer/HeartGrid"]
-layout_mode = 2
-texture = ExtResource("7_jb86q")
-
-[node name="TextureRect5" type="TextureRect" parent="GuiContainer/HeartGrid"]
-layout_mode = 2
-texture = ExtResource("7_jb86q")
 
 [node name="DemoBoss" parent="." instance=ExtResource("8_j4pmm")]
 position = Vector2(4044, 150)

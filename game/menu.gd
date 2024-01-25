@@ -27,6 +27,7 @@ func _process(delta):
 			remove_child(menu)
 			add_child(newScee)
 			$Player.position = newScee.get_node('PlayerSpawn').position
+			$GuiContainer.visible = true
 			
 			newScee.wake()
 			
@@ -42,6 +43,7 @@ func _process(delta):
 			remove_child(menu)
 			add_child(newScee)
 			$Player.position = newScee.get_node('PlayerSpawn').position
+			$GuiContainer.visible = true
 			
 			newScee.get_node('gameAudio1').play() #WILL CHANGE LATER. LMK WHEN U WANNA ADD AUDIO.
 			
@@ -73,5 +75,6 @@ func _on_player_death():
 		get_tree().call_group('enemy', 'queue_free')
 		get_tree().call_group('audio', 'queue_free')
 		remove_child($GameMapNode)
+		$GuiContainer.visible = false
 		add_child(menu)
 		inMenu = true

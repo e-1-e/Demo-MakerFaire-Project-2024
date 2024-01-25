@@ -95,6 +95,3 @@ frame_progress = 0.169442
 visible = false
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_rtfr8")
-
-[node name="LeftHandMark" type="Marker2D" parent="."]
-position = Vector2(-25, -1.429)

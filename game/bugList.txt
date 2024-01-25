@@ -1,2 +1,11 @@
 bug list:
 	-gravity isn't constant
+	-unresponsive hitbox
+	-hitbox has dementia (forgets the player is sitting on the enemy)
+	
+	
+proposed features?:
+	- knockback on every heart lost?
+		- projectiles = half knockback power
+	- time limit????
+	

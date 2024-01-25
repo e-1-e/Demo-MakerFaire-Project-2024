@@ -1,24 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmrs3sf3yc1py"]
+[gd_scene load_steps=3 format=3 uid="uid://bmrs3sf3yc1py"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgfrm"]
-size = Vector2(1.48187, 1.41389)
+[ext_resource type="Texture2D" uid="uid://cyiidbrjfsbdf" path="res://assets/projecticle1.png" id="1_yono4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rhdl2"]
+radius = 8.49116
 
 [node name="Projectile" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.3, 0.3)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.584975, 0.220445)
+offset_left = -106.667
+offset_top = -110.0
+offset_right = 149.333
+offset_bottom = 146.0
+texture = ExtResource("1_yono4")
 
 [node name="HeatSeeker" type="Area2D" parent="."]
+position = Vector2(-106.667, -110)
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeatSeeker"]
-position = Vector2(11.7849, 4.26878)
+position = Vector2(128, 127)
 rotation = -3.14159
-scale = Vector2(16.486, -6.69249)
-shape = SubResource("RectangleShape2D_pgfrm")
+scale = Vector2(15.892, -15.65)
+shape = SubResource("CircleShape2D_rhdl2")

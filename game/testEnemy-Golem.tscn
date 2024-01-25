@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://icfwwcmxaema"]
+[gd_scene load_steps=16 format=3 uid="uid://icfwwcmxaema"]
 
 [ext_resource type="Script" path="res://testEnemy-Golem.gd" id="1_ixfad"]
 [ext_resource type="Texture2D" uid="uid://cavcypq1v6mkl" path="res://assets/demo_enemy/1-17-24-DemoCharV3-Frame1.png" id="2_15r2g"]
@@ -53,6 +53,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vm654"]
 size = Vector2(39, 36)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stdbk"]
+size = Vector2(44.2857, 88)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugdjd"]
 size = Vector2(38, 35)
 
@@ -83,9 +86,9 @@ scale = Vector2(0.7, 1)
 collision_layer = 5
 
 [node name="Box" type="CollisionShape2D" parent="FatalHitbox"]
-position = Vector2(20.5, 6)
+position = Vector2(22.1429, 8.6)
 scale = Vector2(1, 0.1)
-shape = SubResource("RectangleShape2D_vm654")
+shape = SubResource("RectangleShape2D_stdbk")
 debug_color = Color(0.917647, 0.219608, 0.454902, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
