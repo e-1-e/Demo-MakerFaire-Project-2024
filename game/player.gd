@@ -44,7 +44,7 @@ func _physics_process(delta):
 	
 	var newSpeed = SPEED / 2 if Input.is_action_pressed("shift") else SPEED
 	
-	var newGravity = gravity if not is_on_wall() else gravity
+	var newGravity = gravity if not is_on_floor() else gravity
 	
 	if not anchored:
 		if not is_on_floor():
@@ -64,6 +64,8 @@ func _physics_process(delta):
 			if is_on_wall() and check_for_tiles().onWall:
 				print('dis RES')
 				onWall = true
+				
+				#Handle wall-jump.
 				if not $StompDetector.has_overlapping_bodies():
 					velocity.x += newSpeed * (-1.5 if check_for_tiles().wallDir == 'right' else 1.5)
 					for i in range(25):
@@ -110,6 +112,11 @@ func changeHealth(change):
 	
 func arcFunc(startingPoint : Vector2, endPoint : Vector2, delta : float):
 	var change = (endPoint.x - startingPoint.x) * delta
+	
+	#y/(v) = -((x-(h/2))**2)/((h/2)**2) + 1
+	var v = 150
+	var h = (endPoint.x-startingPoint.x)
+	
 	return -((endPoint.y - startingPoint.y)/(endPoint.x - startingPoint.x)) * sqrt(-(change**2) + (endPoint.x - startingPoint.x)**2) + (endPoint.y-startingPoint.y)
 	
 #ik, this is stupid, but i cant do nested funcs for no reason

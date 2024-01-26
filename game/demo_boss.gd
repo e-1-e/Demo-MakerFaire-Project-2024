@@ -53,4 +53,4 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	print(get_owner().get_parent())
 	print('I REMEMBER SHE SAID F ME NOW THAT GIRL WANNA')
-	projectile(get_owner().get_parent().get_node('Player'))
+	#projectile(get_owner().get_parent().get_node('Player'))

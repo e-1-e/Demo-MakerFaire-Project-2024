@@ -2,10 +2,12 @@ bug list:
 	-gravity isn't constant
 	-unresponsive hitbox
 	-hitbox has dementia (forgets the player is sitting on the enemy)
-	
+	-knockback shape: y=-\frac{1}{7}x^{2}\ +1
 	
 proposed features?:
 	- knockback on every heart lost?
 		- projectiles = half knockback power
 	- time limit????
+	- controls lost upon wall jump 💀😭😭 (and regained upon landing)
+	- 
 	

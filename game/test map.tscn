@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4eh1ac6occ5b"]
+[gd_scene load_steps=16 format=3 uid="uid://b4eh1ac6occ5b"]
 
 [ext_resource type="Script" path="res://test map.gd" id="1_d4in8"]
-[ext_resource type="Texture2D" uid="uid://bx70sv0n0eus0" path="res://assets/1-11-24-SampleTextBG.png" id="1_oacg6"]
 [ext_resource type="Texture2D" uid="uid://c8ehhigf73bqg" path="res://assets/1-11-24-SpriteSheetSample2.png" id="2_2umo5"]
+[ext_resource type="Texture2D" uid="uid://b2x0s42efwa4d" path="res://starry1.png" id="2_rts5a"]
 [ext_resource type="Script" path="res://killbrick.gd" id="3_emapb"]
 [ext_resource type="PackedScene" uid="uid://icfwwcmxaema" path="res://testEnemy-Golem.tscn" id="4_570li"]
 [ext_resource type="AudioStream" uid="uid://b77rni0nus1su" path="res://1 17 24 (1).wav" id="5_1xiwc"]
+[ext_resource type="Texture2D" uid="uid://d36schk7vwga4" path="res://12-12-23-Snowball.png" id="8_6e3w7"]
 [ext_resource type="PackedScene" uid="uid://b42lgxkb3ff4a" path="res://demo_boss.tscn" id="8_j4pmm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65vlb"]
@@ -807,14 +808,14 @@ point_count = 3
 script = ExtResource("1_d4in8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 show_behind_parent = true
 offset_left = -1290.0
 offset_top = -900.0
 offset_right = 6210.0
 offset_bottom = 2130.0
 scale = Vector2(1.0561, 1.24491)
-texture = ExtResource("1_oacg6")
+texture = ExtResource("2_rts5a")
+stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 show_behind_parent = true
@@ -862,5 +863,22 @@ rotation = 3.14159
 
 [node name="DemoBoss" parent="." instance=ExtResource("8_j4pmm")]
 position = Vector2(4044, 150)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+top_level = true
+z_index = 100
+color = Color(0.65098, 0.768627, 1, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+top_level = true
+z_index = 100
+position = Vector2(2814, 234)
+scale = Vector2(154.687, 183.051)
+color = Color(1, 1, 0.0823529, 1)
+energy = 1.84
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+texture = ExtResource("8_6e3w7")
 
 [connection signal="body_entered" from="SpikeyArea" to="SpikeyArea" method="_on_body_entered"]
