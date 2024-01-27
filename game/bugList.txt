@@ -2,7 +2,6 @@ bug list:
 	-gravity isn't constant
 	-unresponsive hitbox
 	-hitbox has dementia (forgets the player is sitting on the enemy)
-	-knockback shape: y=-\frac{1}{7}x^{2}\ +1
 	
 proposed features?:
 	- knockback on every heart lost?
@@ -11,3 +10,6 @@ proposed features?:
 	- controls lost upon wall jump 💀😭😭 (and regained upon landing)
 	- 
 	
+questions?:
+	- how powerful should the knockback be
+		-1 block? 3 blocks? for reference, the golem platform is 11 blocks long

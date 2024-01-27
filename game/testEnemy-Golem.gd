@@ -77,7 +77,7 @@ func _on_hitbox_body_entered(body):
 		
 		attackDebounce = true
 		body.changeHealth(1)
-		body.impulse(Vector2(250 * (-1 if scale.x > 0 else 1), -250))
+		body.impulse(250, scale.x < 0)
 		await get_tree().create_timer(2).timeout
 		attackDebounce = false
 

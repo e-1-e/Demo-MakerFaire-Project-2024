@@ -110,33 +110,35 @@ func changeHealth(change):
 		get_owner().get_node('GuiContainer').get_node('HeartGrid').get_node('TextureRect' + str(i)).visible = health >= i
 	
 	
-func arcFunc(startingPoint : Vector2, endPoint : Vector2, delta : float):
-	var change = (endPoint.x - startingPoint.x) * delta
-	
+func arcFunc(delta : float, v : float = 150):
 	#y/(v) = -((x-(h/2))**2)/((h/2)**2) + 1
-	var v = 150
-	var h = (endPoint.x-startingPoint.x)
 	
-	return -((endPoint.y - startingPoint.y)/(endPoint.x - startingPoint.x)) * sqrt(-(change**2) + (endPoint.x - startingPoint.x)**2) + (endPoint.y-startingPoint.y)
+	var h = 100
+	
+	var x = delta * h if delta < 0.51 else fmod((delta * h),float(h/2))
+	
+	print('arcFunc logs')
+	print(x)
+	return v * (-(((x - (h/2))**2)/(h/2)**2) + 1) * (1 if delta > 0.5 else -1)
+	
 	
 #ik, this is stupid, but i cant do nested funcs for no reason
-func impulse(directio : Vector2):
-	if anchored:
+func impulse(power: float, invertX : bool = false):
+	if anchored or health <= 0:
 		return
 		
 	anchored = true
-	var endPos = position + directio
-	
-	var start = position
-	
-	for i in 10:
-		velocity.x = (endPos.x - position.x)
-		velocity.y = arcFunc(start, endPos, float(i+1)/10.0) * 1.35
+
+	for i in 50:
+		velocity.x = power * (1 if invertX == true else -1)
+		velocity.y = -power + (power * i/25)
+		print('HARDCORE IM GOIN')
+		print(velocity.y)
 		
 		velocity *= 3
 		
 		move_and_slide()
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.0025).timeout
 	anchored = false
 
 
