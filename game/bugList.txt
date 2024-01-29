@@ -2,13 +2,14 @@ bug list:
 	-gravity isn't constant
 	-unresponsive hitbox
 	-hitbox has dementia (forgets the player is sitting on the enemy)
+	-enemy flip / code rewrite
 	
 proposed features?:
 	- knockback on every heart lost?
 		- projectiles = half knockback power
 	- time limit????
 	- controls lost upon wall jump 💀😭😭 (and regained upon landing)
-	- 
+	- make projectile fade upon block collision
 	
 questions?:
 	- how powerful should the knockback be

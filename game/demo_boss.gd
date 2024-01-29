@@ -18,30 +18,42 @@ func projectile(target):
 	await get_tree().create_timer(1).timeout
 	get_parent().add_child(newProject)
 	
-	
 	print('huh huh huh')
 	print(get_parent())
 	print(newProject)
 	print(get_parent().get_node('Projectile'))
 	
 	newProject.position = position + $LeftHandMark.position
+	newProject.testProp = true
 	print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhh !!!!!!!!! ')
 	print(newProject.position)
 	newProject.get_node('HeatSeeker').body_entered.connect(func (x):
 		#explosion whatever
-		if x.name == 'Player':
-			newProject.queue_free()
+		if x.name == 'Player' and newProject.testProp:
+			newProject.testProp = false
 			x.changeHealth(1)
+			
+			var luhT = newProject.create_tween()
+			luhT.tween_property(newProject, 'modulate', Color(0, 0, 0, 0), 0.25)
+			luhT.tween_callback(newProject.queue_free)
+		elif x.name == 'TileMap':
+			newProject.testProp = false
+			var luhT = newProject.create_tween()
+			luhT.tween_property(newProject, 'modulate', Color(0, 0, 0, 0), 1)
+			luhT.tween_callback(newProject.queue_free)
 	)
 	
 	print('SKRRT')
-	if target != null and newProject != null and self != null:
+	if target != null and newProject != null and get_tree() and newProject.testProp == true:
 		print("YOU CAN GET WHATCHU WANT")
 		while newProject.get_parent() == get_parent():
 			newProject.position += (target.position - newProject.position).normalized() * 5
 			
+			if not get_tree(): return null
+			if not newProject.testProp: return null
 			await get_tree().create_timer(0.001).timeout
 			print('CHOSPTICK CAME WITH A LARGE LO MEIN')
+			if not is_instance_valid(newProject): return null
 
 func _physics_process(delta):
 	if not awake: return null
@@ -51,6 +63,10 @@ func _physics_process(delta):
 
 func _ready():
 	await get_tree().create_timer(0.5).timeout
-	print(get_owner().get_parent())
-	print('I REMEMBER SHE SAID F ME NOW THAT GIRL WANNA')
-	#projectile(get_owner().get_parent().get_node('Player'))
+	
+	while get_tree() and get_owner() != null:
+		await get_tree().create_timer(5).timeout
+		
+		if get_owner().get_parent() == null: return null
+		projectile(get_owner().get_parent().get_node('Player'))
+	queue_free()
