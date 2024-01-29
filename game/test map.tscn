@@ -800,7 +800,7 @@ size = Vector2(5656.36, 44)
 
 [sub_resource type="Curve2D" id="Curve2D_62s04"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1872, 906, 0, 0, 0, 0, 1158, 906, 0, 0, 0, 0, 1872, 906)
+"points": PackedVector2Array(0, 0, 0, 0, 1842, 906, 0, 0, 0, 0, 1128, 906, 0, 0, 0, 0, 1842, 906)
 }
 point_count = 3
 
@@ -858,7 +858,7 @@ scale = Vector2(1.71004, 1.83901)
 curve = SubResource("Curve2D_62s04")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="enemyPath1"]
-position = Vector2(1872, 906)
+position = Vector2(1842, 906)
 rotation = 3.14159
 
 [node name="DemoBoss" parent="." instance=ExtResource("8_j4pmm")]

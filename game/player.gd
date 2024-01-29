@@ -142,6 +142,7 @@ func impulse(power: float, invertX : bool = false):
 	anchored = false
 
 
+'''
 func _on_stomp_detector_body_entered(body):
 	print('tell me....')
 	print(body)
@@ -149,3 +150,14 @@ func _on_stomp_detector_body_entered(body):
 	
 	if body in get_tree().get_nodes_in_group('enemy') and not anchored and to_global($StompDetector.position).y < body.position.y:
 		body.change_health(1)
+'''
+
+
+func _on_ready():
+	while true:
+		await get_tree().create_timer(0.05).timeout
+		var bodyList = $StompDetector.get_overlapping_bodies()
+		
+		for body in bodyList:
+			if body in get_tree().get_nodes_in_group('enemy') and not anchored and to_global($StompDetector.position).y < body.position.y:
+				body.change_health(1)

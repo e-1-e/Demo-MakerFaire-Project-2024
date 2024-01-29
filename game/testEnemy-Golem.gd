@@ -48,10 +48,13 @@ func _physics_process(delta):
 	#print(position)
 	get_owner().get_node('enemyPath1').get_node('PathFollow2D').progress_ratio += 0.001
 	
+	'''
 	if get_owner().get_node('enemyPath1').get_node('PathFollow2D').rotation != prev_rotation:
-		position -= (Vector2(90, 0) if scale.x != 2 else Vector2(-90, 0))
+		position -= (Vector2(90, 0) if $AnimatedSprite2D.scale.x != 0.184 else Vector2(-90, 0))
+	'''
 	
-	scale = Vector2(2, 2) if get_owner().get_node('enemyPath1').get_node('PathFollow2D').rotation != 0 else Vector2(-2, 2)
+	#scale = Vector2(2, 2) if get_owner().get_node('enemyPath1').get_node('PathFollow2D').rotation != 0 else Vector2(-2, 2)
+	$AnimatedSprite2D.scale = Vector2(0.184, 0.182) if get_owner().get_node('enemyPath1').get_node('PathFollow2D').rotation != 0 else Vector2(-0.184, 0.182)
 	
 	prev_rotation = get_owner().get_node('enemyPath1').get_node('PathFollow2D').rotation
 
@@ -77,7 +80,7 @@ func _on_hitbox_body_entered(body):
 		
 		attackDebounce = true
 		body.changeHealth(1)
-		body.impulse(250, scale.x < 0)
+		body.impulse(250, $AnimatedSprite2D.scale.x < 0)
 		await get_tree().create_timer(2).timeout
 		attackDebounce = false
 
