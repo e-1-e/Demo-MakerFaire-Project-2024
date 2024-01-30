@@ -11,3 +11,11 @@ proposed features?:
 questions?:
 	- how powerful should the knockback be
 		-1 block? 3 blocks? for reference, the golem platform is 11 blocks long
+	- how many levels ???????
+		- furthermore, what will these levels be?
+		
+
+
+demands/necessities:
+	- first off, we should ask Mr. Lewandowski if we have to stick to basic things such as the given name for the project or whatnot
+		- if not, then we NEEEEEED to think of a name.

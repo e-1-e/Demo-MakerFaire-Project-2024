@@ -44,7 +44,7 @@ func _physics_process(delta):
 	
 	var newSpeed = SPEED / 2 if Input.is_action_pressed("shift") else SPEED
 	
-	var newGravity = gravity if not is_on_floor() else gravity
+	var newGravity = gravity if not (check_for_tiles().onWall and not is_on_floor()) else gravity * 0.5
 	
 	if not anchored:
 		if not is_on_floor():
@@ -123,15 +123,15 @@ func arcFunc(delta : float, v : float = 150):
 	
 	
 #ik, this is stupid, but i cant do nested funcs for no reason
-func impulse(power: float, invertX : bool = false):
+func impulse(power: float, invertX : bool = false, speed : int = 1):
 	if anchored or health <= 0:
 		return
 		
 	anchored = true
 
-	for i in 50:
+	for i in 50/speed:
 		velocity.x = power * (1 if invertX == true else -1)
-		velocity.y = -power + (power * i/25)
+		velocity.y = -power + (power * i/(50)/(2 * speed)) #1
 		print('HARDCORE IM GOIN')
 		print(velocity.y)
 		
@@ -155,7 +155,7 @@ func _on_stomp_detector_body_entered(body):
 
 func _on_ready():
 	while true:
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.01).timeout
 		var bodyList = $StompDetector.get_overlapping_bodies()
 		
 		for body in bodyList:

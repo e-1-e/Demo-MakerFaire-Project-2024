@@ -32,6 +32,7 @@ func projectile(target):
 		if x.name == 'Player' and newProject.testProp:
 			newProject.testProp = false
 			x.changeHealth(1)
+			x.impulse(150, newProject.position.x < x.position.x, 10)
 			
 			var luhT = newProject.create_tween()
 			luhT.tween_property(newProject, 'modulate', Color(0, 0, 0, 0), 0.25)
