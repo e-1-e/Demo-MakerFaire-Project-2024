@@ -861,9 +861,6 @@ curve = SubResource("Curve2D_62s04")
 position = Vector2(1842, 906)
 rotation = 3.14159
 
-[node name="DemoBoss" parent="." instance=ExtResource("8_j4pmm")]
-position = Vector2(4044, 150)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 top_level = true
 z_index = 100
@@ -880,5 +877,27 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 texture = ExtResource("8_6e3w7")
+
+[node name="BossStuff" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ZigzagGuideL" type="Marker2D" parent="BossStuff"]
+position = Vector2(3882, 84)
+
+[node name="ZigzagGuideR" type="Marker2D" parent="BossStuff"]
+position = Vector2(4056, 84)
+
+[node name="ZigzagGuideT" type="Marker2D" parent="BossStuff"]
+position = Vector2(4044, -186)
+
+[node name="ZigzagGuideB" type="Marker2D" parent="BossStuff"]
+position = Vector2(4044, 154)
+
+[node name="DemoBoss" parent="." node_paths=PackedStringArray("pathContainer") groups=["enemy"] instance=ExtResource("8_j4pmm")]
+position = Vector2(4044, 156)
+pathContainer = NodePath("../BossStuff")
 
 [connection signal="body_entered" from="SpikeyArea" to="SpikeyArea" method="_on_body_entered"]

@@ -13,6 +13,7 @@ questions?:
 		-1 block? 3 blocks? for reference, the golem platform is 11 blocks long
 	- how many levels ???????
 		- furthermore, what will these levels be?
+	- should the bosses have more than one attack
 		
 
 

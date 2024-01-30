@@ -62,38 +62,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_cutc6")
+"texture": ExtResource("12_4g3gg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_4g3gg")
+"texture": ExtResource("11_cutc6")
 }],
-"loop": true,
+"loop": false,
 "name": &"punch",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtfr8"]
-size = Vector2(53, 56)
+size = Vector2(53, 59)
 
 [node name="DemoBoss" type="CharacterBody2D"]
 scale = Vector2(1.4, 1.4)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_u22d5")
 projecty = ExtResource("2_pcuiv")
 
 [node name="LegSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ollfv")
 animation = &"walk"
-frame_progress = 0.650098
 speed_scale = -1.0
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vfqrw")
-animation = &"idle"
-frame_progress = 0.169442
+animation = &"punch"
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-0.5, -1)
+position = Vector2(-0.5, 0.499999)
 shape = SubResource("RectangleShape2D_rtfr8")
 
 [node name="LeftHandMark" type="Marker2D" parent="."]

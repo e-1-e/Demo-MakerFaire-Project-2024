@@ -974,6 +974,7 @@ slide_on_ceiling = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+zoom = Vector2(0.4, 1)
 
 [node name="GuiContainer" type="Control" parent="."]
 visible = false
