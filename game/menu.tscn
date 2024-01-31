@@ -976,7 +976,6 @@ slide_on_ceiling = false
 position = Vector2(960, 540)
 
 [node name="GuiContainer" type="Control" parent="."]
-visible = false
 top_level = true
 z_index = 685
 layout_mode = 3
@@ -1027,6 +1026,86 @@ texture = ExtResource("5_o8drd")
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 texture = ExtResource("5_o8drd")
+
+[node name="LoseScreen" type="Control" parent="."]
+visible = false
+top_level = true
+z_index = 685
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(1.00318, 1.05084)
+
+[node name="ColorRect" type="ColorRect" parent="LoseScreen"]
+layout_mode = 0
+offset_right = 1926.0
+offset_bottom = 1100.0
+color = Color(0, 0, 0, 0.435294)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LoseScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -960.997
+offset_top = 40.9196
+offset_right = 964.003
+offset_bottom = 274.92
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 0.270588, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 171
+bbcode_enabled = true
+text = "[center]death :([/center]"
+text_direction = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="LoseScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -768.0
+offset_top = 568.117
+offset_right = 768.0
+offset_bottom = 802.117
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 0.270588, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]Cause of death: couldnt get on reddit"
+text_direction = 1
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="LoseScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -779.574
+offset_top = 449.164
+offset_right = 756.426
+offset_bottom = 586.164
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 0.270588, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 73
+bbcode_enabled = true
+text = "[center]You lasted 9001 seconds.[/center]"
+text_direction = 1
+
+[node name="Button" type="Button" parent="LoseScreen"]
+layout_mode = 0
+offset_left = 727.686
+offset_top = 819.344
+offset_right = 803.686
+offset_bottom = 857.344
+scale = Vector2(6.04231, 4.21572)
+theme_override_font_sizes/font_size = 21
+text = "Return"
 
 [connection signal="body_entered" from="Menu/TutorialDoor" to="." method="_on_tutorial_door_body_entered"]
 [connection signal="body_exited" from="Menu/TutorialDoor" to="." method="_on_game_door_body_exited"]
