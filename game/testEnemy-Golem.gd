@@ -79,7 +79,7 @@ func _on_hitbox_body_entered(body):
 			return null
 		
 		attackDebounce = true
-		body.changeHealth(1)
+		body.changeHealth(1, 'touched a Golem')
 		body.impulse(250, $AnimatedSprite2D.scale.x < 0)
 		await get_tree().create_timer(2).timeout
 		attackDebounce = false

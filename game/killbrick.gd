@@ -17,4 +17,5 @@ func _on_body_entered(body):
 	
 	if body.name == 'Player':
 		print('yeuh!')
+		body.changeHealth(9999999, 's p i k e')
 		body.death.emit()

@@ -1,16 +1,50 @@
-[gd_scene load_steps=8 format=3 uid="uid://dywaigxqrxt08"]
+[gd_scene load_steps=12 format=3 uid="uid://dywaigxqrxt08"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_ur5rd"]
 [ext_resource type="PackedScene" uid="uid://cci1frlmdqavk" path="res://player.tscn" id="1_ywcs5"]
 [ext_resource type="PackedScene" uid="uid://b4eh1ac6occ5b" path="res://test map.tscn" id="2_4g8y5"]
 [ext_resource type="PackedScene" uid="uid://cay8pxowj1b8w" path="res://Level 1.tscn" id="3_ymnv5"]
 [ext_resource type="Texture2D" uid="uid://b32vy6ljik66m" path="res://assets/1-24-24-PlaceholderHeart.png" id="5_o8drd"]
+[ext_resource type="Texture2D" uid="uid://66e83py0aiy2" path="res://assets/1-31-24-RectBtn.png" id="6_i10v7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2yn5"]
 size = Vector2(155, 210)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qpv3"]
 size = Vector2(1915, 53)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_je4p7"]
+texture = ExtResource("6_i10v7")
+texture_margin_left = 40.0
+texture_margin_top = 10.0
+texture_margin_right = 40.0
+texture_margin_bottom = 10.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.435294, 0.435294, 0.435294, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fag05"]
+texture = ExtResource("6_i10v7")
+texture_margin_left = 40.0
+texture_margin_top = 10.0
+texture_margin_right = 40.0
+texture_margin_bottom = 10.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pnp00"]
+texture = ExtResource("6_i10v7")
+texture_margin_left = 40.0
+texture_margin_top = 10.0
+texture_margin_right = 40.0
+texture_margin_bottom = 10.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.109804, 0.109804, 0.109804, 1)
 
 [node name="Node" type="Node"]
 script = ExtResource("1_ur5rd")
@@ -25,6 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Menu"]
 anchors_preset = 10
@@ -63,6 +98,7 @@ offset_top = -240.0
 offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 32
@@ -975,7 +1011,8 @@ slide_on_ceiling = false
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
-[node name="GuiContainer" type="Control" parent="."]
+[node name="GuiContainer" type="Control" parent="." groups=["gui"]]
+visible = false
 top_level = true
 z_index = 685
 layout_mode = 3
@@ -983,6 +1020,7 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(1.00318, 1.05084)
+mouse_filter = 2
 
 [node name="HeartGrid" type="GridContainer" parent="GuiContainer"]
 custom_minimum_size = Vector2(120, 120)
@@ -1027,7 +1065,7 @@ custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 texture = ExtResource("5_o8drd")
 
-[node name="LoseScreen" type="Control" parent="."]
+[node name="LoseScreen" type="Control" parent="." groups=["gui"]]
 visible = false
 top_level = true
 z_index = 685
@@ -1036,11 +1074,13 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(1.00318, 1.05084)
+mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="LoseScreen"]
+[node name="Modulater" type="ColorRect" parent="LoseScreen"]
 layout_mode = 0
 offset_right = 1926.0
 offset_bottom = 1100.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.435294)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="LoseScreen"]
@@ -1053,6 +1093,7 @@ offset_top = 40.9196
 offset_right = 964.003
 offset_bottom = 274.92
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0.270588, 0.270588, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
@@ -1061,7 +1102,7 @@ bbcode_enabled = true
 text = "[center]death :([/center]"
 text_direction = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="LoseScreen"]
+[node name="DeathCause" type="RichTextLabel" parent="LoseScreen"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1071,6 +1112,7 @@ offset_top = 568.117
 offset_right = 768.0
 offset_bottom = 802.117
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0.270588, 0.270588, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
@@ -1079,7 +1121,7 @@ bbcode_enabled = true
 text = "[center]Cause of death: couldnt get on reddit"
 text_direction = 1
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="LoseScreen"]
+[node name="TimeLabel" type="RichTextLabel" parent="LoseScreen"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1089,6 +1131,7 @@ offset_top = 449.164
 offset_right = 756.426
 offset_bottom = 586.164
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0.270588, 0.270588, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
@@ -1097,14 +1140,20 @@ bbcode_enabled = true
 text = "[center]You lasted 9001 seconds.[/center]"
 text_direction = 1
 
-[node name="Button" type="Button" parent="LoseScreen"]
+[node name="ReturnBtn" type="Button" parent="LoseScreen"]
+z_index = 5
 layout_mode = 0
-offset_left = 727.686
-offset_top = 819.344
-offset_right = 803.686
-offset_bottom = 857.344
-scale = Vector2(6.04231, 4.21572)
-theme_override_font_sizes/font_size = 21
+offset_left = 747.622
+offset_top = 833.619
+offset_right = 1157.62
+offset_bottom = 990.619
+scale = Vector2(1.01278, 0.913505)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxTexture_je4p7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fag05")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pnp00")
 text = "Return"
 
 [connection signal="body_entered" from="Menu/TutorialDoor" to="." method="_on_tutorial_door_body_entered"]

@@ -3,6 +3,8 @@ extends CharacterBody2D
 signal death
 
 @export var health = 5
+@export var freezeCam = true
+@export var lastDmgReason = ''
 
 const SPEED = 1200.0
 const JUMP_VELOCITY = -900.0
@@ -88,9 +90,10 @@ func _physics_process(delta):
 			print("CURRENT collisions: " + str($WallDetectorAreaTL.get_overlapping_bodies()))
 		move_and_slide()
 	
-	if not get_owner().inMenu:
+	if not get_owner().inMenu and not freezeCam:
 		get_owner().get_node('Camera2D').position = position
-		get_owner().get_node('GuiContainer').position = position - get_viewport_rect().size/2
+		for i in get_tree().get_nodes_in_group('gui'):
+			i.position = position - get_viewport_rect().size/2
 
 
 func _on_death():
@@ -100,9 +103,12 @@ func _on_death():
 	health = 5
 	changeHealth(0)
 	
-func changeHealth(change):
+func changeHealth(change, reason = ''):
 	health -= change
 	print(health)
+	
+	if reason: lastDmgReason = reason
+	
 	for i in range(1, 6):
 		print(health >= i)
 		print(i)

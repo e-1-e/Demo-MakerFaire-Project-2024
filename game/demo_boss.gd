@@ -40,7 +40,7 @@ func projectile(target):
 		#explosion whatever
 		if x.name == 'Player' and newProject.testProp:
 			newProject.testProp = false
-			x.changeHealth(1)
+			x.changeHealth(1, 'hit by projectile 💀')
 			x.impulse(150, newProject.position.x < x.position.x, 10)
 			
 			var luhT = newProject.create_tween()

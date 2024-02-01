@@ -8,12 +8,20 @@ var menu = $Menu
 @export var GameLevel : PackedScene
 @export var inMenu = true
 
+var timeSnapshot = 0
+
+
 var doorDebounce = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print('NEVA TOO MUCH!!!! NEVA TOO MUCH!!!! NEVA TOO MUCH!!!! NEVA TOO MUCH!!!')
-
+	
+func start_game():
+	remove_child(menu)
+	$Player.freezeCam = false
+	$GuiContainer.visible = true
+	timeSnapshot = Time.get_ticks_msec()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,10 +32,9 @@ func _process(delta):
 			doorDebounce = true
 			await get_tree().create_timer(1).timeout
 			var newScee = TutorialLevel.instantiate()
-			remove_child(menu)
 			add_child(newScee)
 			$Player.position = newScee.get_node('PlayerSpawn').position
-			$GuiContainer.visible = true
+			start_game()
 			
 			newScee.wake()
 			
@@ -40,10 +47,9 @@ func _process(delta):
 			doorDebounce = true
 			await get_tree().create_timer(1).timeout
 			var newScee = GameLevel.instantiate()
-			remove_child(menu)
 			add_child(newScee)
 			$Player.position = newScee.get_node('PlayerSpawn').position
-			$GuiContainer.visible = true
+			start_game()
 			
 			newScee.get_node('gameAudio1').play() #WILL CHANGE LATER. LMK WHEN U WANNA ADD AUDIO.
 			
@@ -77,4 +83,18 @@ func _on_player_death():
 		remove_child($GameMapNode)
 		$GuiContainer.visible = false
 		add_child(menu)
+		move_child($LoseScreen, -1)
+		$LoseScreen.visible = true
+		$LoseScreen/TimeLabel.text = '[center]You lasted ' + str((Time.get_ticks_msec() - timeSnapshot)/1000) + ' seconds.'
+		$LoseScreen/DeathCause.text = '[center]Cause of death: ' + str($Player.lastDmgReason)
+		
+		$Player.anchored = true
+		$Player.freezeCam = true
+		$Camera2D.position = Vector2(960, 540)
+		$LoseScreen.position = Vector2(0, 0)
+
+		#$LoseScreen/ReturnBtn.grab_focus()
+		await $LoseScreen/ReturnBtn.pressed
+		$Player.anchored = false
+		$LoseScreen.visible = false
 		inMenu = true
