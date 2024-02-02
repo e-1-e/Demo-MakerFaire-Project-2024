@@ -1001,7 +1001,7 @@ color = Color(0.560784, 0.423529, 0.243137, 1)
 position = Vector2(959.5, 27.5)
 shape = SubResource("RectangleShape2D_2qpv3")
 
-[node name="Player" parent="." instance=ExtResource("1_ywcs5")]
+[node name="Player" parent="." groups=["teleportable"] instance=ExtResource("1_ywcs5")]
 position = Vector2(939, 402)
 scale = Vector2(1.99664, 2.13492)
 collision_layer = 3

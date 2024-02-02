@@ -33,7 +33,7 @@ func check_for_tiles():
 
 func _physics_process(delta):
 	# Add the gravity.
-	if health == 0:
+	if health <= 0:
 		death.emit()
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -137,7 +137,8 @@ func impulse(power: float, invertX : bool = false, speed : int = 1):
 
 	for i in 50/speed:
 		velocity.x = power * (1 if invertX == true else -1)
-		velocity.y = -power + (power * i/(50)/(2 * speed)) #1
+		velocity.y = -power + (power * i/(25/speed))
+		#-power + (power * (iteration/halfDuration))
 		print('HARDCORE IM GOIN')
 		print(velocity.y)
 		

@@ -13,7 +13,23 @@ var awake = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var burrito
-func projectile(target):
+
+var storeInitPos = {'w' : 3}
+
+func storeInitPositions():
+	for i in get_children():
+		storeInitPos[i.name] = i.position
+
+func partOffset(offset):
+	if not storeInitPos.keys().has('LegSprite'): return null
+	
+	for i in get_children():
+		i.position = storeInitPos[i.name] + offset
+
+func pathContainerTranslate(v : Vector2):
+	return pathContainer.position + v
+
+func projectile(target, lefty = true):
 	if not self:
 		return null
 	
@@ -66,30 +82,53 @@ func projectile(target):
 			if not is_instance_valid(newProject): return null
 
 #zaigzag
-var baseVelocity = Vector2(50, 15) * 1.5
-var invertX = 1
-var invertY = 1
+var Loffset = Vector2(0, 0)
+var invertX = 2
+var invertY = 0
+
+var Poffset = Vector2(0, 0)
+var pInvertX = 1
 
 func _physics_process(delta):
 	if not awake or not get_parent(): return null
 	
+	'''
 	velocity = baseVelocity * Vector2(invertX, invertY)
 	
-	if position.x <= pathContainer.get_node('ZigzagGuideL').position.x or position.x >= pathContainer.get_node('ZigzagGuideR').position.x:
-		position += Vector2(-2 * invertX, 0)
+	if position.x <= pathContainerTranslate(pathContainer.get_node('ZigzagGuideL').position).x or position.x >= pathContainerTranslate(pathContainer.get_node('ZigzagGuideR').position).x:
+		position += Vector2(-25 * invertX, 0)
 		invertX *= -1
 	
-	if position.y <= pathContainer.get_node('ZigzagGuideT').position.y or position.y >= pathContainer.get_node('ZigzagGuideB').position.y:
-		position += Vector2(0, -4 * invertY)
+	if position.y <= pathContainerTranslate(pathContainer.get_node('ZigzagGuideT').position).y or position.y >= pathContainerTranslate(pathContainer.get_node('ZigzagGuideB').position).y:
+		position += Vector2(0, -25 * invertY)
+		invertY *= -1
+	'''
+	
+	if (get_owner().get_parent().get_node('Player').position - position).length() > 4000:
+		return null
+	
+	velocity = (get_owner().get_parent().get_node('Player').position - position).normalized() * 300
+	
+	Loffset += Vector2(invertX, invertY)
+	partOffset(Loffset)
+	
+	#to avoid the 9000 triggers per second check position AND invert(axis). genius!!!!!!!!!!
+	if (Loffset.x <= -50 and invertX < 0) or (Loffset.x >= 50 and invertX > 0):
+		invertX *= -1
+		
+	if (Loffset.y <= 150 and invertY < 0) or (Loffset.y >= -150 and invertY > 0):
 		invertY *= -1
 	
 	move_and_slide()
 
 func _ready():
+	awake = false
 	await get_tree().create_timer(0.5).timeout
+	awake = true
 	
+	storeInitPositions()
 	while get_tree() and get_owner() != null:
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(randf() * 4).timeout
 		
 		if get_owner().get_parent() == null: return null
 		projectile(get_owner().get_parent().get_node('Player'))
@@ -107,3 +146,24 @@ func change_health(change):
 		
 		await get_tree().create_timer(1).timeout
 		healthDebounce = false
+		
+		
+'''
+bryce  come on man this darn thing is giving me anxiety bro why ask for this so close to the end 
+its so goddamn complex fr
+
+ok fr im tryna plan....
+
+to achieve the lil zig zag effect while the boss is chasing the player...
+	- move the boss root node to actual pos
+	- offset the sprites and collision box using the zigzag function
+	
+	- ASSUMING the root node will rely on the offsetted collision box for collisions
+		- when the boss hits a tile, the boss will bounce. 
+
+to achieve the helix, do the same thing lmfaooooooooo
+	- instantiate two projectiles
+		- their root nodes will move towards the player, no zigzag bs
+		- offset sprites and hitbox using luh zigzag funky
+
+'''
