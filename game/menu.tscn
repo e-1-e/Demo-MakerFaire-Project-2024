@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cci1frlmdqavk" path="res://player.tscn" id="1_ywcs5"]
 [ext_resource type="PackedScene" uid="uid://b4eh1ac6occ5b" path="res://test map.tscn" id="2_4g8y5"]
 [ext_resource type="PackedScene" uid="uid://cay8pxowj1b8w" path="res://Level 1.tscn" id="3_ymnv5"]
-[ext_resource type="Texture2D" uid="uid://b32vy6ljik66m" path="res://assets/1-24-24-PlaceholderHeart.png" id="5_o8drd"]
+[ext_resource type="PackedScene" uid="uid://bah3mhlr6pwsy" path="res://gui_container.tscn" id="6_h760y"]
 [ext_resource type="Texture2D" uid="uid://66e83py0aiy2" path="res://assets/1-31-24-RectBtn.png" id="6_i10v7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2yn5"]
@@ -1011,60 +1011,6 @@ slide_on_ceiling = false
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
-[node name="GuiContainer" type="Control" parent="." groups=["gui"]]
-visible = false
-top_level = true
-z_index = 685
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-scale = Vector2(1.00318, 1.05084)
-mouse_filter = 2
-
-[node name="HeartGrid" type="GridContainer" parent="GuiContainer"]
-custom_minimum_size = Vector2(120, 120)
-layout_direction = 2
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 23.924
-offset_top = -172.154
-offset_right = 23.924
-offset_bottom = 67.8462
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-localize_numeral_system = false
-columns = 999
-
-[node name="TextureRect1" type="TextureRect" parent="GuiContainer/HeartGrid"]
-custom_minimum_size = Vector2(240, 240)
-layout_mode = 2
-texture = ExtResource("5_o8drd")
-
-[node name="TextureRect2" type="TextureRect" parent="GuiContainer/HeartGrid"]
-custom_minimum_size = Vector2(240, 240)
-layout_mode = 2
-texture = ExtResource("5_o8drd")
-
-[node name="TextureRect3" type="TextureRect" parent="GuiContainer/HeartGrid"]
-custom_minimum_size = Vector2(240, 240)
-layout_mode = 2
-texture = ExtResource("5_o8drd")
-
-[node name="TextureRect4" type="TextureRect" parent="GuiContainer/HeartGrid"]
-custom_minimum_size = Vector2(240, 240)
-layout_mode = 2
-texture = ExtResource("5_o8drd")
-
-[node name="TextureRect5" type="TextureRect" parent="GuiContainer/HeartGrid"]
-custom_minimum_size = Vector2(240, 240)
-layout_mode = 2
-texture = ExtResource("5_o8drd")
-
 [node name="LoseScreen" type="Control" parent="." groups=["gui"]]
 visible = false
 top_level = true
@@ -1155,6 +1101,9 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_je4p7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_fag05")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_pnp00")
 text = "Return"
+
+[node name="GuiContainer" parent="." groups=["gui"] instance=ExtResource("6_h760y")]
+visible = false
 
 [connection signal="body_entered" from="Menu/TutorialDoor" to="." method="_on_tutorial_door_body_entered"]
 [connection signal="body_exited" from="Menu/TutorialDoor" to="." method="_on_game_door_body_exited"]

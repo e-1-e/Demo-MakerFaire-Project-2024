@@ -90,6 +90,7 @@ func _physics_process(delta):
 			print("CURRENT collisions: " + str($WallDetectorAreaTL.get_overlapping_bodies()))
 		move_and_slide()
 	
+	#Move screen GUI.
 	if not get_owner().inMenu and not freezeCam:
 		get_owner().get_node('Camera2D').position = position
 		for i in get_tree().get_nodes_in_group('gui'):

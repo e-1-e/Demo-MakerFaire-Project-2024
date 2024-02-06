@@ -72,8 +72,9 @@ func projectile(target, lefty = true):
 	print('SKRRT')
 	if target != null and newProject != null and get_tree() and newProject.testProp == true:
 		print("YOU CAN GET WHATCHU WANT")
+		var currentDirec = (target.position - newProject.position).normalized() * 5
 		while newProject.get_parent() == get_parent():
-			newProject.position += (target.position - newProject.position).normalized() * 5
+			newProject.position += currentDirec
 			
 			if not get_tree(): return null
 			if not newProject.testProp: return null

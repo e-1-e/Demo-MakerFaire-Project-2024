@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://bah3mhlr6pwsy"]
+
+[ext_resource type="Texture2D" uid="uid://b32vy6ljik66m" path="res://assets/1-24-24-PlaceholderHeart.png" id="1_0vl27"]
+
+[node name="GuiContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="HeartGrid" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(120, 120)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -174.0
+offset_right = 60.0
+offset_bottom = 66.0002
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+localize_numeral_system = false
+columns = 999
+
+[node name="TextureRect1" type="TextureRect" parent="HeartGrid"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+texture = ExtResource("1_0vl27")
+
+[node name="TextureRect2" type="TextureRect" parent="HeartGrid"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+texture = ExtResource("1_0vl27")
+
+[node name="TextureRect3" type="TextureRect" parent="HeartGrid"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+texture = ExtResource("1_0vl27")
+
+[node name="TextureRect4" type="TextureRect" parent="HeartGrid"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+texture = ExtResource("1_0vl27")
+
+[node name="TextureRect5" type="TextureRect" parent="HeartGrid"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+texture = ExtResource("1_0vl27")
+
+[node name="TimeLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -960.997
+offset_top = 40.9196
+offset_right = 964.003
+offset_bottom = 274.92
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]5:00"
+text_direction = 1

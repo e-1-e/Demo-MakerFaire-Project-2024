@@ -22,6 +22,23 @@ func start_game():
 	$Player.freezeCam = false
 	$GuiContainer.visible = true
 	timeSnapshot = Time.get_ticks_msec()
+	
+	print("THIS THAT UZI MIXTAPEEEEEEEEEEEEE")
+	
+	var altTimer = 300
+	while $GuiContainer.visible:
+		await get_tree().create_timer(1).timeout
+		$GuiContainer/TimeLabel.text = "%d:%02d" % [1, 3]
+		altTimer -= 1
+		'''
+		[time in mins]:[time in secs]
+		[seconds/60]:[seconds%60]
+		
+		("%d:%05d" % (seconds//60, seconds%60))[3:]
+		("%d:%02d" % (seconds//60, seconds))
+		
+		("%d:%02d" % (altTimer//60, altTimer%60))
+		'''
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
