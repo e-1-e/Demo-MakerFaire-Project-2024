@@ -20,3 +20,20 @@ questions?:
 demands/necessities:
 	- first off, we should ask Mr. Lewandowski if we have to stick to basic things such as the given name for the project or whatnot
 		- if not, then we NEEEEEED to think of a name.
+	- i keep forgetting
+	- this is so sad
+	
+
+tutorial script:
+	'Welcome, player!' (wait 1)
+	'This is the tutorial for [game name].' (wait 1)
+	'In this game, your objective is to defeat the boss.' (wait 1)
+	'To begin, press WASD to move around.' (wait 4)
+	'Press SPACE to jump.' (wait 4)
+	'Finally, press SPACE to jump off walls while touching a wall.' (wait 4)
+	'Around the map, there are several things to find.' (wait 2)
+	'You may find a treasure chest (filled with weapons), but you may also find other enemies around, or you may even find the boss room!' (wait 4)
+	'Alright player, good luck!' (wait 1)
+	
+	proposed features:
+		- let player skip thru by clicking?

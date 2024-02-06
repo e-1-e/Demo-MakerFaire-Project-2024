@@ -28,8 +28,10 @@ func start_game():
 	var altTimer = 300
 	while $GuiContainer.visible:
 		await get_tree().create_timer(1).timeout
-		$GuiContainer/TimeLabel.text = "%d:%02d" % [1, 3]
 		altTimer -= 1
+		$GuiContainer/TimeLabel.text = "[center]" + "%d:%02d" % [altTimer/60, altTimer%60]
+		if altTimer <= 0:
+			$Player.changeHealth(999, 'time\'s up!')
 		'''
 		[time in mins]:[time in secs]
 		[seconds/60]:[seconds%60]

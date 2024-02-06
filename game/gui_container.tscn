@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bah3mhlr6pwsy"]
+[gd_scene load_steps=3 format=3 uid="uid://bah3mhlr6pwsy"]
 
 [ext_resource type="Texture2D" uid="uid://b32vy6ljik66m" path="res://assets/1-24-24-PlaceholderHeart.png" id="1_0vl27"]
+[ext_resource type="Texture2D" uid="uid://bv80rbb5ojl01" path="res://assets/1-31-24-RoundedBtn.png" id="2_fqi5j"]
 
 [node name="GuiContainer" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="HeartGrid" type="GridContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(120, 120)
 layout_direction = 2
 layout_mode = 1
@@ -69,3 +71,13 @@ theme_override_font_sizes/normal_font_size = 120
 bbcode_enabled = true
 text = "[center]5:00"
 text_direction = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+offset_left = 126.0
+offset_top = 672.0
+offset_right = 166.0
+offset_bottom = 703.0
+scale = Vector2(41.8416, 10.105)
+texture = ExtResource("2_fqi5j")
+region_rect = Rect2(0, 0, 511.371, 257.752)

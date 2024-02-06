@@ -836,7 +836,7 @@ stretch_mode = 1
 [node name="TileMap" type="TileMap" parent="."]
 show_behind_parent = true
 texture_filter = 5
-position = Vector2(-120, -48)
+position = Vector2(6, -6)
 scale = Vector2(1.1, 1.1)
 tile_set = SubResource("TileSet_eees5")
 format = 2

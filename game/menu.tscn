@@ -1104,6 +1104,8 @@ text = "Return"
 
 [node name="GuiContainer" parent="." groups=["gui"] instance=ExtResource("6_h760y")]
 visible = false
+top_level = true
+z_index = 999
 
 [connection signal="body_entered" from="Menu/TutorialDoor" to="." method="_on_tutorial_door_body_entered"]
 [connection signal="body_exited" from="Menu/TutorialDoor" to="." method="_on_game_door_body_exited"]
