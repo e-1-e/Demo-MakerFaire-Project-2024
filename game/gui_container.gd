@@ -30,7 +30,7 @@ func speak(talker : String, talk : String):
 	eHide(true)
 	
 	var checker = RegEx.new()
-	checker.compile(r'\[[0-9]+\.?[0-9]*\]')
+	checker.compile(r'\[[0-9]+\.?[0-9]*\]') #RegExps are suprisingly easy to make lol
 	
 	$SpeakerBox/TextLabel.text = '[center]' + talker
 	

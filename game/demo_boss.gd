@@ -170,3 +170,9 @@ to achieve the helix, do the same thing lmfaooooooooo
 		- offset sprites and hitbox using luh zigzag funky
 
 '''
+
+'''
+ok planning the next feature!!!!!!!!!! yay
+
+feature: i give up lmfaooooooooooooooooooooo
+'''
