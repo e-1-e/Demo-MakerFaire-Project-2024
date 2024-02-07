@@ -1040,7 +1040,6 @@ offset_right = 964.003
 offset_bottom = 274.92
 grow_horizontal = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(1, 0.270588, 0.270588, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/normal_font_size = 171
@@ -1078,7 +1077,6 @@ offset_right = 756.426
 offset_bottom = 586.164
 grow_horizontal = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(1, 0.270588, 0.270588, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/normal_font_size = 73
@@ -1107,6 +1105,7 @@ visible = false
 top_level = true
 z_index = 999
 
+[connection signal="gameWin" from="." to="." method="_on_game_win"]
 [connection signal="body_entered" from="Menu/TutorialDoor" to="." method="_on_tutorial_door_body_entered"]
 [connection signal="body_exited" from="Menu/TutorialDoor" to="." method="_on_game_door_body_exited"]
 [connection signal="body_entered" from="Menu/GameDoor" to="." method="_on_game_door_body_entered"]

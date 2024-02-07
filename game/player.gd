@@ -162,6 +162,8 @@ func _on_stomp_detector_body_entered(body):
 
 
 func _on_ready():
+	get_parent().gameWin.connect(_on_death)
+	
 	while true:
 		await get_tree().create_timer(0.01).timeout
 		var bodyList = $StompDetector.get_overlapping_bodies()

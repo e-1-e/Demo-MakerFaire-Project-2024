@@ -142,7 +142,9 @@ func change_health(change):
 		health -= change
 		
 		if health <= 0:
+			get_parent().get_parent().gameWin.emit()
 			queue_free()
+			return
 			#end of the game lmao
 		
 		await get_tree().create_timer(1).timeout
