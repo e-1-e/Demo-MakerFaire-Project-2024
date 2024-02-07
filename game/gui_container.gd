@@ -16,7 +16,6 @@ There really aren't any formatting requirements other than...
 
 extends Control
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#speak('YEAH', 'went to the bank today they said ya [0.45]LOADED')
@@ -30,6 +29,9 @@ func speak(talker : String, talk : String):
 	isTalking = true
 	eHide(true)
 	
+	var checker = RegEx.new()
+	checker.compile(r'\[[0-9]+\.?[0-9]*\]')
+	
 	$SpeakerBox/TextLabel.text = '[center]' + talker
 	
 	$DialogueBox/TextLabel.text = ''
@@ -42,8 +44,6 @@ func speak(talker : String, talk : String):
 			continue
 			
 		if i == '[':
-			var checker = RegEx.new()
-			checker.compile(r'\[[0-9]+\.?[0-9]*\]')
 			var newMatch = checker.search(talk, iteration)
 			if newMatch:
 				await get_tree().create_timer(float(talk.substr(newMatch.get_start() + 1, len(newMatch.get_string()) - 1))).timeout
@@ -60,6 +60,7 @@ func speak(talker : String, talk : String):
 		iteration += 1
 		skipTo = -1
 		
+	$DialogueBox/TextLabel.text = checker.sub(talk, '', true)
 	isTalking = false
 	
 func eHide(mode = false):
