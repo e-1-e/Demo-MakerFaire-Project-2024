@@ -28,6 +28,7 @@ tutorial script:
 	'Finally, press SPACE to jump off walls while touching a wall.' (wait 4)
 	'Around the map, there are several things to find.' (wait 2)
 	'You may find a treasure chest (filled with weapons), but you may also find other enemies around, or you may even find the boss room!' (wait 4)
+	'Oh, and one more thing. [pause 1]If you do find an enemy, jump on their head to damage them!' (wait 4)
 	'Alright player, good luck!' (wait 1)
 	
 	proposed features:

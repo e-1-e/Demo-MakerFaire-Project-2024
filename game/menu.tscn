@@ -1103,7 +1103,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_pnp00")
 text = "Return"
 
 [node name="GuiContainer" parent="." groups=["gui"] instance=ExtResource("6_h760y")]
-visible = false
 top_level = true
 z_index = 999
 
