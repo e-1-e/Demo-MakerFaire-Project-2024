@@ -173,3 +173,6 @@ func _on_ready():
 			if body in get_tree().get_nodes_in_group('enemy') and not anchored and to_global($StompDetector.position).y < body.position.y:
 				body.change_health(1)
 				print('VLONEEEEEEEEEEEE VLONE THUGGGGGGGGG')
+				
+				if body in get_tree().get_nodes_in_group('boss'):
+					impulse(500, body.position.x < position.x)

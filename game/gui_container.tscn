@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bah3mhlr6pwsy"]
+[gd_scene load_steps=4 format=3 uid="uid://bah3mhlr6pwsy"]
 
 [ext_resource type="Texture2D" uid="uid://b32vy6ljik66m" path="res://assets/1-24-24-PlaceholderHeart.png" id="1_0vl27"]
+[ext_resource type="Script" path="res://gui_container.gd" id="1_ydvt2"]
 [ext_resource type="Texture2D" uid="uid://bv80rbb5ojl01" path="res://assets/1-31-24-RoundedBtn.png" id="2_fqi5j"]
 
 [node name="GuiContainer" type="Control"]
@@ -8,6 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+script = ExtResource("1_ydvt2")
 
 [node name="HeartGrid" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(120, 120)

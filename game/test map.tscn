@@ -935,10 +935,11 @@ gizmo_extents = 100.0
 position = Vector2(0, 232.099)
 gizmo_extents = 100.0
 
-[node name="DemoBoss" parent="." node_paths=PackedStringArray("pathContainer") groups=["enemy"] instance=ExtResource("8_j4pmm")]
+[node name="DemoBoss" parent="." node_paths=PackedStringArray("pathContainer") groups=["boss", "enemy"] instance=ExtResource("8_j4pmm")]
 position = Vector2(8820, -4062)
 scale = Vector2(5.2, 4.8)
 pathContainer = NodePath("../BossStuff")
+health = 10
 
 [node name="Portal" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("10_dme76")]
 position = Vector2(708, 1944)
