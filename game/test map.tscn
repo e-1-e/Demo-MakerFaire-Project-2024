@@ -825,10 +825,10 @@ script = ExtResource("1_d4in8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true
-offset_left = -9240.0
-offset_top = -5214.0
-offset_right = 11951.0
-offset_bottom = 5076.0
+offset_left = -15822.0
+offset_top = -12468.0
+offset_right = 23782.0
+offset_bottom = 8416.0
 scale = Vector2(1.0561, 1.24491)
 texture = ExtResource("2_rts5a")
 stretch_mode = 1

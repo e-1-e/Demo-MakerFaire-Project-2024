@@ -10,7 +10,6 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="HeartGrid" type="GridContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(120, 120)
 layout_direction = 2
 layout_mode = 1
@@ -72,8 +71,9 @@ bbcode_enabled = true
 text = "[center]5:00"
 text_direction = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="DialogueBox" type="NinePatchRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 126.0
 offset_top = 672.0
 offset_right = 166.0
@@ -81,3 +81,57 @@ offset_bottom = 703.0
 scale = Vector2(41.8416, 10.105)
 texture = ExtResource("2_fqi5j")
 region_rect = Rect2(0, 0, 511.371, 257.752)
+
+[node name="TextLabel" type="RichTextLabel" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.5584
+offset_top = 3.56259
+offset_right = 1683.44
+offset_bottom = 503.563
+grow_horizontal = 2
+scale = Vector2(0.02, 0.08)
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "I was broke. I was just at home. Now I'm on the road. Talking to Usher at the Grove."
+text_direction = 1
+
+[node name="SpeakerBox" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 726.0
+offset_top = 546.0
+offset_right = 766.0
+offset_bottom = 577.0
+scale = Vector2(11.837, 3.37639)
+texture = ExtResource("2_fqi5j")
+patch_margin_left = 2
+patch_margin_right = 2
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="TextLabel" type="RichTextLabel" parent="SpeakerBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.0
+offset_top = 4.0
+offset_right = 1683.0
+offset_bottom = 293.0
+grow_horizontal = 2
+scale = Vector2(0.02, 0.08)
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[center]Grab the Wheel"
+text_direction = 1
