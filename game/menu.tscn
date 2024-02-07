@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dywaigxqrxt08"]
+[gd_scene load_steps=13 format=3 uid="uid://dywaigxqrxt08"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_ur5rd"]
 [ext_resource type="PackedScene" uid="uid://cci1frlmdqavk" path="res://player.tscn" id="1_ywcs5"]
 [ext_resource type="PackedScene" uid="uid://b4eh1ac6occ5b" path="res://test map.tscn" id="2_4g8y5"]
 [ext_resource type="PackedScene" uid="uid://cay8pxowj1b8w" path="res://Level 1.tscn" id="3_ymnv5"]
+[ext_resource type="Texture2D" uid="uid://cdmkbrp5ko8o3" path="res://assets/2-7-24-DemoLogo.png" id="4_uouwa"]
 [ext_resource type="PackedScene" uid="uid://bah3mhlr6pwsy" path="res://gui_container.tscn" id="6_h760y"]
 [ext_resource type="Texture2D" uid="uid://66e83py0aiy2" path="res://assets/1-31-24-RectBtn.png" id="6_i10v7"]
 
@@ -62,6 +63,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="Menu"]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 80.0
@@ -73,6 +75,7 @@ text = "i wanna go on reddit"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Menu"]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 2.0
@@ -1000,6 +1003,21 @@ color = Color(0.560784, 0.423529, 0.243137, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Menu/MainMenuGround4"]
 position = Vector2(959.5, 27.5)
 shape = SubResource("RectangleShape2D_2qpv3")
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 480.0
+offset_top = -438.0
+offset_right = -480.0
+offset_bottom = -182.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("4_uouwa")
 
 [node name="Player" parent="." groups=["teleportable"] instance=ExtResource("1_ywcs5")]
 position = Vector2(939, 402)
