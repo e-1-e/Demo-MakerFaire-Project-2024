@@ -72,6 +72,8 @@ func _process(delta):
 			$Player.position = newScee.get_node('PlayerSpawn').position
 			start_game()
 			
+			newScee.wake()
+			
 			newScee.get_node('gameAudio1').play() #WILL CHANGE LATER. LMK WHEN U WANNA ADD AUDIO.
 			
 			inMenu = false

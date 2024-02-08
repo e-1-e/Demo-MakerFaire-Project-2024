@@ -17,7 +17,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func check_for_tiles():
 	if not get_owner() or not get_owner().get_node('GameMapNode'):
-		print('EXCEPTION 9')
 		return {
 			onWall = false
 		}
@@ -64,7 +63,6 @@ func _physics_process(delta):
 			if is_on_floor():
 				velocity.y = JUMP_VELOCITY
 			if is_on_wall() and check_for_tiles().onWall:
-				print('dis RES')
 				onWall = true
 				
 				#Handle wall-jump.
@@ -98,7 +96,6 @@ func _physics_process(delta):
 
 
 func _on_death():
-	print('vamp anthem! 2')
 	position = Vector2(939, 402)
 	get_owner().get_node('Camera2D').position = Vector2(960, 540)
 	health = 5
@@ -113,7 +110,6 @@ func changeHealth(change, reason = ''):
 	for i in range(1, 6):
 		print(health >= i)
 		print(i)
-		print('YEAH I TOLD U UH BOUT THAT MONEY')
 		get_owner().get_node('GuiContainer').get_node('HeartGrid').get_node('TextureRect' + str(i)).visible = health >= i
 	
 	
@@ -124,8 +120,6 @@ func arcFunc(delta : float, v : float = 150):
 	
 	var x = delta * h if delta < 0.51 else fmod((delta * h),float(h/2))
 	
-	print('arcFunc logs')
-	print(x)
 	return v * (-(((x - (h/2))**2)/(h/2)**2) + 1) * (1 if delta > 0.5 else -1)
 	
 	
@@ -140,8 +134,6 @@ func impulse(power: float, invertX : bool = false, speed : int = 1):
 		velocity.x = power * (1 if invertX == true else -1)
 		velocity.y = -power + (power * i/(25/speed))
 		#-power + (power * (iteration/halfDuration))
-		print('HARDCORE IM GOIN')
-		print(velocity.y)
 		
 		velocity *= 3
 		
@@ -169,12 +161,8 @@ func _on_ready():
 		var bodyList = $StompDetector.get_overlapping_bodies()
 		
 		for body in bodyList:
-			print('i already told you that its overrrrrrrrrrr')
-			print('is the boy an enemy: ' + str(body in get_tree().get_nodes_in_group('enemy')))
-			print('AHUWAHHHHHHH' + body.name)
 			if body in get_tree().get_nodes_in_group('enemy') and not anchored and to_global($StompDetector.position).y < body.position.y:
 				body.change_health(1)
-				print('VLONEEEEEEEEEEEE VLONE THUGGGGGGGGG')
 				
 				if body in get_tree().get_nodes_in_group('boss'):
 					impulse(500, body.position.x < position.x)
