@@ -24,6 +24,7 @@ func start_game():
 	$Player.freezeCam = false
 	$GuiContainer.visible = true
 	timeSnapshot = Time.get_ticks_msec()
+	$GuiContainer/TimeLabel.text = "[center]5:00"
 	
 	print("THIS THAT UZI MIXTAPEEEEEEEEEEEEE")
 	

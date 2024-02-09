@@ -19,6 +19,7 @@ func wake():
 			newProject.position = $TileMap.to_global($TileMap.map_to_local(i)) + Vector2(0, 70)
 			newProject.testProp = true
 			newProject.constantTravel(Vector2(0, 10))
+		if not get_tree(): return null
 		await get_tree().create_timer(5).timeout
 
 # Called when the node enters the scene tree for the first time.
