@@ -20,11 +20,12 @@ func wake():
 			newProject.testProp = true
 			newProject.constantTravel(Vector2(0, 10))
 		if not get_tree(): return null
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(1).timeout
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	await get_tree().create_timer(0.1).timeout
+	get_parent().game_time()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

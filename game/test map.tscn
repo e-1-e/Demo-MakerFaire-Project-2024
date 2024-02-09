@@ -939,11 +939,37 @@ gizmo_extents = 100.0
 position = Vector2(8820, -4062)
 scale = Vector2(5.2, 4.8)
 pathContainer = NodePath("../BossStuff")
-health = 1
+health = 10
 
 [node name="Portal" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("10_dme76")]
-position = Vector2(708, 1944)
+light_mask = 32
+position = Vector2(3996, -96)
 scale = Vector2(0.999214, 1.68032)
 destination = NodePath("../Spawn1")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Portal"]
+top_level = true
+z_index = 100
+position = Vector2(4020, 12)
+scale = Vector2(20, 23.667)
+color = Color(0, 0.368627, 0.937255, 1)
+energy = 5.72
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+texture = ExtResource("8_6e3w7")
+
+[node name="TutorialStuff" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 4296.0
+offset_bottom = 2226.0
+
+[node name="SpawnCam" type="Marker2D" parent="TutorialStuff"]
+position = Vector2(504, 1944)
+
+[node name="EnemyCam" type="Marker2D" parent="TutorialStuff"]
+position = Vector2(1506, 1014)
 
 [connection signal="body_entered" from="SpikeyArea" to="SpikeyArea" method="_on_body_entered"]

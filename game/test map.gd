@@ -9,5 +9,15 @@ func _ready():
 func _process(delta):
 	pass
 	
+var tutorialEnabled = true
+var tutorial = []
+
 func wake():
+	await get_tree().create_timer(0.1).timeout
+	
+	if tutorialEnabled:
+		pass
+	
+	await get_tree().create_timer(0.1).timeout
+	get_parent().game_time()
 	$DemoBoss.awake = true

@@ -1028,7 +1028,6 @@ slide_on_ceiling = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
-zoom = Vector2(0.1, 0.1)
 
 [node name="LoseScreen" type="Control" parent="." groups=["gui"]]
 visible = false

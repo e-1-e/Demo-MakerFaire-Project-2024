@@ -19,13 +19,8 @@ var doorDebounce = false
 func _ready():
 	print('NEVA TOO MUCH!!!! NEVA TOO MUCH!!!! NEVA TOO MUCH!!!! NEVA TOO MUCH!!!')
 	
-func start_game():
-	remove_child(menu)
-	$Player.freezeCam = false
-	$GuiContainer.visible = true
-	timeSnapshot = Time.get_ticks_msec()
+func game_time():
 	$GuiContainer/TimeLabel.text = "[center]5:00"
-	
 	print("THIS THAT UZI MIXTAPEEEEEEEEEEEEE")
 	
 	var altTimer = 300
@@ -44,6 +39,15 @@ func start_game():
 		
 		("%d:%02d" % (altTimer//60, altTimer%60))
 		'''
+	
+func start_game():
+	remove_child(menu)
+	$Player.freezeCam = false
+	$GuiContainer.visible = true
+	timeSnapshot = Time.get_ticks_msec()
+	$GuiContainer/TimeLabel.text = "[center]5:00"
+	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
