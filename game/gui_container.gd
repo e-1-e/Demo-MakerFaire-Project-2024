@@ -10,7 +10,7 @@ The 'speak' function accepts two parameters:
 -------------------------------------------HOW TO FORMAT THE MSG--------------------------------------
 
 There really aren't any formatting requirements other than...
-	- Use brackets to enter a pause, and put a number in between to define how long the pause will be
+	- Use brackets to enter a pause, and put a number in between to define how long the pause will be (in seconds)
 		* For example, "I'm gonna pause now. [1]Done."
 '''
 
@@ -24,8 +24,11 @@ func _ready():
 var isTalking = false
 var skip = false
 
+signal doneTalking
+
 func speak(talker : String, talk : String):
 	if isTalking: return
+	get_parent().move_child(self, -1)
 	isTalking = true
 	eHide(true)
 	
@@ -62,6 +65,8 @@ func speak(talker : String, talk : String):
 		
 	$DialogueBox/TextLabel.text = checker.sub(talk, '', true)
 	isTalking = false
+	doneTalking.emit()
+	return
 	
 func eHide(mode = false):
 	$DialogueBox.visible = mode

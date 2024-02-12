@@ -74,7 +74,6 @@ text = "[center]5:00"
 text_direction = 1
 
 [node name="DialogueBox" type="NinePatchRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 126.0
 offset_top = 672.0
@@ -104,8 +103,21 @@ bbcode_enabled = true
 text = "I was broke. I was just at home. Now I'm on the road. Talking to Usher at the Grove."
 text_direction = 1
 
+[node name="Skipper" type="Button" parent="DialogueBox"]
+z_index = 365
+layout_mode = 0
+offset_left = 0.860388
+offset_top = 20.7818
+offset_right = 2100.86
+offset_bottom = 140.782
+scale = Vector2(0.0183467, 0.0744389)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 33
+text = "click me to skip"
+flat = true
+
 [node name="SpeakerBox" type="NinePatchRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 726.0
 offset_top = 546.0

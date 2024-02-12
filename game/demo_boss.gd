@@ -74,7 +74,7 @@ func projectile(target, lefty = true):
 		print("YOU CAN GET WHATCHU WANT")
 		var currentDirec = (target.position - newProject.position).normalized() * 5
 		while newProject.get_parent() == get_parent():
-			newProject.position += currentDirec
+			newProject.position += currentDirec * 4.5/maxProjectileDebounce
 			
 			if not get_tree(): return null
 			if not newProject.testProp: return null
@@ -90,25 +90,15 @@ var invertY = 0
 var Poffset = Vector2(0, 0)
 var pInvertX = 1
 
+var walkSpeed = 300
+
 func _physics_process(delta):
 	if not awake or not get_parent(): return null
-	
-	'''
-	velocity = baseVelocity * Vector2(invertX, invertY)
-	
-	if position.x <= pathContainerTranslate(pathContainer.get_node('ZigzagGuideL').position).x or position.x >= pathContainerTranslate(pathContainer.get_node('ZigzagGuideR').position).x:
-		position += Vector2(-25 * invertX, 0)
-		invertX *= -1
-	
-	if position.y <= pathContainerTranslate(pathContainer.get_node('ZigzagGuideT').position).y or position.y >= pathContainerTranslate(pathContainer.get_node('ZigzagGuideB').position).y:
-		position += Vector2(0, -25 * invertY)
-		invertY *= -1
-	'''
 	
 	if (get_owner().get_parent().get_node('Player').position - position).length() > 4000:
 		return null
 	
-	velocity = (get_owner().get_parent().get_node('Player').position - position).normalized() * 300
+	velocity = (get_owner().get_parent().get_node('Player').position - position).normalized() * walkSpeed
 	
 	Loffset += Vector2(invertX, invertY)
 	partOffset(Loffset)
@@ -121,6 +111,8 @@ func _physics_process(delta):
 		invertY *= -1
 	
 	move_and_slide()
+	
+var maxProjectileDebounce = 4
 
 func _ready():
 	awake = false
@@ -129,7 +121,7 @@ func _ready():
 	
 	storeInitPositions()
 	while get_tree() and get_owner() != null:
-		await get_tree().create_timer(randf() * 4).timeout
+		await get_tree().create_timer(randf() * maxProjectileDebounce).timeout
 		
 		if get_owner().get_parent() == null: return null
 		projectile(get_owner().get_parent().get_node('Player'))
@@ -140,6 +132,19 @@ func change_health(change):
 	if not healthDebounce:
 		healthDebounce = true
 		health -= change
+		
+		if health == 8:
+			invertX *= 1.2
+			walkSpeed *= 1.5
+			maxProjectileDebounce *= 0.8
+		elif health == 5:
+			invertX *= 2
+			walkSpeed *= 2.25
+			maxProjectileDebounce *= 0.5
+		elif health == 2:
+			invertX *= 4
+			walkSpeed *= 2
+			maxProjectileDebounce *= 0.3
 		
 		if health <= 0:
 			get_parent().get_parent().gameWin.emit()

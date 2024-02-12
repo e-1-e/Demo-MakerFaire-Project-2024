@@ -15,17 +15,28 @@ demands/necessities:
 	- working name STERF
 	
 
-tutorial script:
-	'Welcome, player!' (wait 1)
-	'This is the tutorial for [game name].' (wait 1)
-	'In this game, your objective is to defeat the boss.' (wait 1)
-	'To begin, press WASD to move around.' (wait 4)
-	'Press SPACE to jump.' (wait 4)
-	'Finally, press SPACE to jump off walls while touching a wall.' (wait 4)
-	'Around the map, there are several things to find.' (wait 2)
-	'You may find a treasure chest (filled with weapons), but you may also find other enemies around, or you may even find the boss room!' (wait 4)
-	'Oh, and one more thing. [pause 1]If you do find an enemy, jump on their head to hurt them!' (wait 4)
-	'Alright player, good luck!' (wait 1)
+boss phases:
+	phase 1: normal ass mover shooter zigzagger
+	phase 2 (-2 hearts): speed up a lil, shoot more projectiles
+	phase 3: (-5 hearts): more speed
+		- one time attack: luh beam
+			- shoot a bunch of projectiles to form a beam (kind of)
+			- this will destroy some blocks depending on if the beam touches any (not the border tho)
+	phase 4: (-8 hearts): zigzag crazy AHHHHHHHHHHHH
+		- destroy a section of the ground with a spirit bomb. obv the player gon fling so dont want 100% ground loss
+		- projectile rate UP
 	
-	proposed features:
-		- let player skip thru by clicking?
+	death (-10 hearts): harmless explosion
+		- after a few seconds, then return to menu
+		
+
+		
+enemy ideas:
+	- cursed ahh Mirror
+		- sort of fits the House theme
+		- can be used as a stationary shooter (shoots light lmfao)
+		- it'd fit better with a lamp prop or other light emitting thingamjig
+		- only problem is this  kind of crap only makes sense if the sun were to be reflected off the mirror so......
+	- (thingamajig thrower idk)
+		- invisible block that throws random ass objects on the player's head, like BANANA
+	- 
