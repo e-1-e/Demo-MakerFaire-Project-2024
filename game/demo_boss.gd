@@ -108,9 +108,30 @@ func downwardsBeam():
 	for i in 20:
 		for y in 45:
 			projectyDirected(Vector2(randf() * 20 - 10, 10))
-			await get_tree().create_timer(0.01).timeout
+			await get_tree().create_timer(0.005).timeout
 		await get_tree().create_timer(0.01).timeout
 		
+func daBom():
+	anchored = true
+	var myTween1 = create_tween()
+	myTween1.tween_property(self, 'position', Vector2(8820, -4062), 3)
+	
+	await myTween1.finished
+	
+	var newProjec = await projectile(null, true, true)
+	newProjec.scale *= 25
+	
+	newProjec.get_node('HeatSeeker').body_shape_entered.connect(func(rid: RID, body: Node2D, bodyShapeIndex: int, localShapeIndex: int):
+		if body.name == 'TileMap':
+			var tile = body.get_coords_for_body_rid(rid)
+			if tile:
+				body.set_cell(0, tile)
+	)
+	for i in 300:
+		await get_tree().create_timer(0.01).timeout
+		newProjec.position += Vector2(0, 20)
+	newProjec.queue_free()
+	anchored = false
 
 #zaigzag
 func storeInitPositions():
@@ -125,6 +146,8 @@ func partOffset(offset):
 
 func pathContainerTranslate(v : Vector2):
 	return pathContainer.position + v
+	
+var anchored = false
 
 var Loffset = Vector2(0, 0)
 var invertX = 2
@@ -155,7 +178,8 @@ func _physics_process(delta):
 	if (Loffset.y <= 150 and invertY < 0) or (Loffset.y >= -150 and invertY > 0):
 		invertY *= -1
 	
-	move_and_slide()
+	if not anchored:
+		move_and_slide()
 	
 var maxProjectileDebounce = 4
 
@@ -169,6 +193,7 @@ func _ready():
 		await get_tree().create_timer(randf() * maxProjectileDebounce).timeout
 		
 		if get_owner().get_parent() == null: return null
+		if anchored: continue
 		projectile(get_owner().get_parent().get_node('Player'))
 	queue_free()
 
@@ -192,6 +217,7 @@ func change_health(change):
 			invertX *= 4
 			walkSpeed *= 2
 			maxProjectileDebounce *= 0.3
+			daBom()
 		
 		if health <= 0:
 			get_parent().get_parent().gameWin.emit()

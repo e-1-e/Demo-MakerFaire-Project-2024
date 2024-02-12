@@ -939,7 +939,7 @@ gizmo_extents = 100.0
 position = Vector2(8820, -4062)
 scale = Vector2(5.2, 4.8)
 pathContainer = NodePath("../BossStuff")
-health = 9
+health = 3
 
 [node name="Portal" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("10_dme76")]
 light_mask = 32
