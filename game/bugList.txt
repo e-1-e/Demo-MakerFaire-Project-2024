@@ -22,8 +22,10 @@ boss phases:
 		- one time attack: luh beam
 			- shoot a bunch of projectiles to form a beam (kind of)
 			- this will destroy some blocks depending on if the beam touches any (not the border tho)
+			- make the fade not so brokenm someoneohw
 	phase 4: (-8 hearts): zigzag crazy AHHHHHHHHHHHH
 		- destroy a section of the ground with a spirit bomb. obv the player gon fling so dont want 100% ground loss
+			- if the player falls too far outside of the boss room they lose all their hearts
 		- projectile rate UP
 	
 	death (-10 hearts): harmless explosion

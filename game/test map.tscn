@@ -939,18 +939,18 @@ gizmo_extents = 100.0
 position = Vector2(8820, -4062)
 scale = Vector2(5.2, 4.8)
 pathContainer = NodePath("../BossStuff")
-health = 3
+health = 9
 
 [node name="Portal" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("10_dme76")]
 light_mask = 32
-position = Vector2(3996, -96)
+position = Vector2(870, 1848)
 scale = Vector2(0.999214, 1.68032)
 destination = NodePath("../Spawn1")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Portal"]
 top_level = true
 z_index = 100
-position = Vector2(4020, 12)
+position = Vector2(894, 1950)
 scale = Vector2(20, 23.667)
 color = Color(0, 0.368627, 0.937255, 1)
 energy = 5.72

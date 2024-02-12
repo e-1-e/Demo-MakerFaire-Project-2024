@@ -16,20 +16,8 @@ var burrito
 
 var storeInitPos = {'w' : 3}
 
-func storeInitPositions():
-	for i in get_children():
-		storeInitPos[i.name] = i.position
-
-func partOffset(offset):
-	if not storeInitPos.keys().has('LegSprite'): return null
-	
-	for i in get_children():
-		i.position = storeInitPos[i.name] + offset
-
-func pathContainerTranslate(v : Vector2):
-	return pathContainer.position + v
-
-func projectile(target, lefty = true):
+#attack functions
+func projectile(target = null, lefty = true, god = false):
 	if not self:
 		return null
 	
@@ -52,25 +40,28 @@ func projectile(target, lefty = true):
 	newProject.testProp = true
 	print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhh !!!!!!!!! ')
 	print(newProject.position)
-	newProject.get_node('HeatSeeker').body_entered.connect(func (x):
-		#explosion whatever
-		if x.name == 'Player' and newProject.testProp:
-			newProject.testProp = false
-			x.changeHealth(1, 'hit by projectile 💀')
-			x.impulse(150, newProject.position.x < x.position.x, 10)
-			
-			var luhT = newProject.create_tween()
-			luhT.tween_property(newProject, 'modulate', Color(0, 0, 0, 0), 0.25)
-			luhT.tween_callback(newProject.queue_free)
-		elif x.name == 'TileMap':
-			newProject.testProp = false
-			var luhT = newProject.create_tween()
-			luhT.tween_property(newProject, 'modulate', Color(0, 0, 0, 0), 1)
-			luhT.tween_callback(newProject.queue_free)
-	)
+	if not god:
+		newProject.get_node('HeatSeeker').body_entered.connect(func (x):
+			#explosion whatever
+			if x.name == 'Player' and newProject.testProp:
+				newProject.testProp = false
+				x.changeHealth(1, 'hit by projectile 💀')
+				x.impulse(150, newProject.position.x < x.position.x, 10)
+				
+				var luhT = newProject.create_tween()
+				luhT.tween_property(newProject, 'modulate', Color(0, 0, 0, 0), 0.25)
+				luhT.tween_callback(newProject.queue_free)
+			elif x.name == 'TileMap':
+				newProject.testProp = false
+				var luhT = newProject.create_tween()
+				luhT.tween_property(newProject, 'modulate', Color(0, 0, 0, 0), 1)
+				luhT.tween_callback(newProject.queue_free)
+		)
 	
 	print('SKRRT')
-	if target != null and newProject != null and get_tree() and newProject.testProp == true:
+	if target == null:
+		return newProject
+	elif target != null and newProject != null and get_tree() and newProject.testProp == true:
 		print("YOU CAN GET WHATCHU WANT")
 		var currentDirec = (target.position - newProject.position).normalized() * 5
 		while newProject.get_parent() == get_parent():
@@ -82,7 +73,59 @@ func projectile(target, lefty = true):
 			print('CHOSPTICK CAME WITH A LARGE LO MEIN')
 			if not is_instance_valid(newProject): return null
 
+var isUsingBeam = false
+
+func projectyDirected(direction):
+	var newProjec = await projectile(null, true, true)
+	isUsingBeam = true
+	
+	newProjec.get_node('HeatSeeker').body_entered.connect(func (x):
+		#explosion whatever
+		if x.name == 'Player' and newProjec.testProp:
+			newProjec.testProp = false
+			x.changeHealth(1, 'hit by projectile 💀')
+			x.impulse(150, newProjec.position.x < x.position.x, 10)
+			
+			var luhT = newProjec.create_tween()
+			luhT.tween_property(newProjec, 'modulate', Color(0, 0, 0, 0), 0.075)
+			luhT.tween_callback(newProjec.queue_free)
+	)
+	
+	var currentCount = 0
+	while is_instance_valid(newProjec):
+		newProjec.position += direction
+		await get_tree().create_timer(0.01).timeout
+		currentCount += 0.01
+		if currentCount >= 1 and is_instance_valid(newProjec):
+			newProjec.testProp = false
+			var luhT = newProjec.create_tween()
+			luhT.tween_property(newProjec, 'modulate', Color(0, 0, 0, 0), 0.25)
+			luhT.tween_callback(newProjec.queue_free)
+	isUsingBeam = false
+			
+
+func downwardsBeam():
+	for i in 20:
+		for y in 45:
+			projectyDirected(Vector2(randf() * 20 - 10, 10))
+			await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.01).timeout
+		
+
 #zaigzag
+func storeInitPositions():
+	for i in get_children():
+		storeInitPos[i.name] = i.position
+
+func partOffset(offset):
+	if not storeInitPos.keys().has('LegSprite'): return null
+	
+	for i in get_children():
+		i.position = storeInitPos[i.name] + offset
+
+func pathContainerTranslate(v : Vector2):
+	return pathContainer.position + v
+
 var Loffset = Vector2(0, 0)
 var invertX = 2
 var invertY = 0
@@ -99,6 +142,8 @@ func _physics_process(delta):
 		return null
 	
 	velocity = (get_owner().get_parent().get_node('Player').position - position).normalized() * walkSpeed
+	if isUsingBeam == true and velocity.y > 0:
+		velocity *= Vector2(1, -1)
 	
 	Loffset += Vector2(invertX, invertY)
 	partOffset(Loffset)
@@ -127,6 +172,7 @@ func _ready():
 		projectile(get_owner().get_parent().get_node('Player'))
 	queue_free()
 
+#health
 var healthDebounce = false
 func change_health(change):
 	if not healthDebounce:
@@ -137,6 +183,7 @@ func change_health(change):
 			invertX *= 1.2
 			walkSpeed *= 1.5
 			maxProjectileDebounce *= 0.8
+			downwardsBeam()
 		elif health == 5:
 			invertX *= 2
 			walkSpeed *= 2.25
