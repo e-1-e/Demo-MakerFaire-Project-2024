@@ -110,7 +110,7 @@ func changeHealth(change, reason = ''):
 	for i in range(1, 6):
 		print(health >= i)
 		print(i)
-		get_owner().get_node('GuiContainer').get_node('HeartGrid').get_node('TextureRect' + str(i)).visible = health >= i
+		get_owner().get_node('GUI').get_node('GuiContainer').get_node('HeartGrid').get_node('TextureRect' + str(i)).visible = health >= i
 	
 	
 func arcFunc(delta : float, v : float = 150):

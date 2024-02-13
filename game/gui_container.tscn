@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bv80rbb5ojl01" path="res://assets/1-31-24-RoundedBtn.png" id="2_fqi5j"]
 
 [node name="GuiContainer" type="Control"]
+top_level = true
+light_mask = 0
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -12,6 +14,7 @@ offset_bottom = 1080.0
 script = ExtResource("1_ydvt2")
 
 [node name="HeartGrid" type="GridContainer" parent="."]
+light_mask = 0
 custom_minimum_size = Vector2(120, 120)
 layout_direction = 2
 layout_mode = 1
@@ -30,26 +33,31 @@ localize_numeral_system = false
 columns = 999
 
 [node name="TextureRect1" type="TextureRect" parent="HeartGrid"]
+light_mask = 0
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 texture = ExtResource("1_0vl27")
 
 [node name="TextureRect2" type="TextureRect" parent="HeartGrid"]
+light_mask = 0
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 texture = ExtResource("1_0vl27")
 
 [node name="TextureRect3" type="TextureRect" parent="HeartGrid"]
+light_mask = 0
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 texture = ExtResource("1_0vl27")
 
 [node name="TextureRect4" type="TextureRect" parent="HeartGrid"]
+light_mask = 0
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 texture = ExtResource("1_0vl27")
 
 [node name="TextureRect5" type="TextureRect" parent="HeartGrid"]
+light_mask = 0
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 texture = ExtResource("1_0vl27")
@@ -74,6 +82,7 @@ text = "[center]5:00"
 text_direction = 1
 
 [node name="DialogueBox" type="NinePatchRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 126.0
 offset_top = 672.0
@@ -118,6 +127,7 @@ text = "click me to skip"
 flat = true
 
 [node name="SpeakerBox" type="NinePatchRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 726.0
 offset_top = 546.0

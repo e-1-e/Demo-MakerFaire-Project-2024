@@ -133,7 +133,7 @@ func daBom():
 	newProjec.queue_free()
 	anchored = false
 
-#zaigzag
+#zaigzagu
 func storeInitPositions():
 	for i in get_children():
 		storeInitPos[i.name] = i.position
@@ -220,7 +220,7 @@ func change_health(change):
 			daBom()
 		
 		if health <= 0:
-			get_parent().get_parent().gameWin.emit()
+			get_parent().get_parent().get_parent().gameWin.emit()
 			queue_free()
 			return
 			#end of the game lmao

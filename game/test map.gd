@@ -1,5 +1,7 @@
 extends Node
 
+@export var boss : Node2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -26,29 +28,29 @@ var tutorial = [
 func wake():
 	await get_tree().create_timer(0.1).timeout
 	
-	if tutorialEnabled and get_parent().get_node('GuiContainer'):
+	if tutorialEnabled and get_parent().get_node('GUI').get_node('GuiContainer'):
 		get_parent().get_node('Player').anchored = true
-		get_parent().get_node('GuiContainer').eHide(true)
-		get_parent().get_node('GuiContainer').get_node('HeartGrid').visible = false
-		get_parent().get_node('GuiContainer').get_node('TimeLabel').visible = false
+		get_parent().get_node('GUI').get_node('GuiContainer').eHide(true)
+		get_parent().get_node('GUI').get_node('GuiContainer').get_node('HeartGrid').visible = false
+		get_parent().get_node('GUI').get_node('GuiContainer').get_node('TimeLabel').visible = false
 		
-		get_parent().get_node('GuiContainer').get_node('DialogueBox').get_node('Skipper').pressed.connect(func():
+		get_parent().get_node('GUI').get_node('GuiContainer').get_node('DialogueBox').get_node('Skipper').pressed.connect(func():
 			if not get_parent():
 				return
-			get_parent().get_node('GuiContainer').skip = true
+			get_parent().get_node('GUI').get_node('GuiContainer').skip = true
 		)
 		
 		for i in tutorial:
-			get_parent().get_node('GuiContainer').speak('weirdo', i[0])
-			await get_parent().get_node('GuiContainer').doneTalking
+			get_parent().get_node('GUI').get_node('GuiContainer').speak('weirdo', i[0])
+			await get_parent().get_node('GUI').get_node('GuiContainer').doneTalking
 			await get_tree().create_timer(1.5).timeout
 			continue
-		get_parent().get_node('GuiContainer').eHide()
-		get_parent().get_node('GuiContainer').get_node('HeartGrid').visible = true
-		get_parent().get_node('GuiContainer').get_node('TimeLabel').visible = true
+		get_parent().get_node('GUI').get_node('GuiContainer').eHide()
+		get_parent().get_node('GUI').get_node('GuiContainer').get_node('HeartGrid').visible = true
+		get_parent().get_node('GUI').get_node('GuiContainer').get_node('TimeLabel').visible = true
 		get_parent().get_node('Player').anchored = false
 	
-	get_parent().get_node('GuiContainer').eHide()
+	get_parent().get_node('GUI').get_node('GuiContainer').eHide()
 	await get_tree().create_timer(0.1).timeout
 	get_parent().game_time()
-	$DemoBoss.awake = true
+	boss.awake = true

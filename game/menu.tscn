@@ -1030,7 +1030,11 @@ slide_on_ceiling = false
 position = Vector2(960, 540)
 zoom = Vector2(0.3, 0.3)
 
-[node name="LoseScreen" type="Control" parent="." groups=["gui"]]
+[node name="GUI" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="LoseScreen" type="Control" parent="GUI" groups=["gui"]]
 visible = false
 top_level = true
 z_index = 685
@@ -1041,14 +1045,14 @@ offset_bottom = 1080.0
 scale = Vector2(1.00318, 1.05084)
 mouse_filter = 2
 
-[node name="Modulater" type="ColorRect" parent="LoseScreen"]
+[node name="Modulater" type="ColorRect" parent="GUI/LoseScreen"]
 layout_mode = 0
 offset_right = 1926.0
 offset_bottom = 1100.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.435294)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="LoseScreen"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/LoseScreen"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1066,7 +1070,7 @@ bbcode_enabled = true
 text = "[center]death :([/center]"
 text_direction = 1
 
-[node name="DeathCause" type="RichTextLabel" parent="LoseScreen"]
+[node name="DeathCause" type="RichTextLabel" parent="GUI/LoseScreen"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1085,7 +1089,7 @@ bbcode_enabled = true
 text = "[center]Cause of death: couldnt get on reddit"
 text_direction = 1
 
-[node name="TimeLabel" type="RichTextLabel" parent="LoseScreen"]
+[node name="TimeLabel" type="RichTextLabel" parent="GUI/LoseScreen"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1103,7 +1107,7 @@ bbcode_enabled = true
 text = "[center]You lasted 9001 seconds.[/center]"
 text_direction = 1
 
-[node name="ReturnBtn" type="Button" parent="LoseScreen"]
+[node name="ReturnBtn" type="Button" parent="GUI/LoseScreen"]
 z_index = 5
 layout_mode = 0
 offset_left = 747.622
@@ -1119,9 +1123,8 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_fag05")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_pnp00")
 text = "Return"
 
-[node name="GuiContainer" parent="." groups=["gui"] instance=ExtResource("6_h760y")]
+[node name="GuiContainer" parent="GUI" groups=["gui"] instance=ExtResource("6_h760y")]
 visible = false
-top_level = true
 z_index = 999
 
 [connection signal="gameWin" from="." to="." method="_on_game_win"]

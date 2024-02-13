@@ -20,14 +20,14 @@ func _ready():
 	print('NEVA TOO MUCH!!!! NEVA TOO MUCH!!!! NEVA TOO MUCH!!!! NEVA TOO MUCH!!!')
 	
 func game_time():
-	$GuiContainer/TimeLabel.text = "[center]5:00"
+	$GUI/GuiContainer/TimeLabel.text = "[center]5:00"
 	print("THIS THAT UZI MIXTAPEEEEEEEEEEEEE")
 	
 	var altTimer = 300
-	while $GuiContainer.visible:
+	while $GUI/GuiContainer.visible:
 		await get_tree().create_timer(1).timeout
 		altTimer -= 1
-		$GuiContainer/TimeLabel.text = "[center]" + "%d:%02d" % [altTimer/60, altTimer%60]
+		$GUI/GuiContainer/TimeLabel.text = "[center]" + "%d:%02d" % [altTimer/60, altTimer%60]
 		if altTimer <= 0:
 			$Player.changeHealth(999, 'time\'s up!')
 		'''
@@ -43,9 +43,9 @@ func game_time():
 func start_game():
 	remove_child(menu)
 	$Player.freezeCam = false
-	$GuiContainer.visible = true
+	$GUI/GuiContainer.visible = true
 	timeSnapshot = Time.get_ticks_msec()
-	$GuiContainer/TimeLabel.text = "[center]5:00"
+	$GUI/GuiContainer/TimeLabel.text = "[center]5:00"
 	
 
 
@@ -109,29 +109,29 @@ func _on_player_death():
 		get_tree().call_group('enemy', 'queue_free')
 		get_tree().call_group('audio', 'queue_free')
 		remove_child($GameMapNode)
-		$GuiContainer.visible = false
+		$GUI/GuiContainer.visible = false
 		add_child(menu)
-		move_child($LoseScreen, -1)
-		$LoseScreen.visible = true
-		$LoseScreen/RichTextLabel.text = '[center]death :('
-		$LoseScreen/RichTextLabel.remove_theme_color_override('default_color')
-		$LoseScreen/RichTextLabel.add_theme_color_override('default_color', Color('#ff4545'))
+		move_child($GUI/LoseScreen, -1)
+		$GUI/LoseScreen.visible = true
+		$GUI/LoseScreen/RichTextLabel.text = '[center]death :('
+		$GUI/LoseScreen/RichTextLabel.remove_theme_color_override('default_color')
+		$GUI/LoseScreen/RichTextLabel.add_theme_color_override('default_color', Color('#ff4545'))
 		
-		$LoseScreen/TimeLabel.text = '[center]You lasted ' + str((Time.get_ticks_msec() - timeSnapshot)/1000) + ' seconds.'
-		$LoseScreen/TimeLabel.remove_theme_color_override('default_color')
-		$LoseScreen/TimeLabel.add_theme_color_override('default_color', Color('#ff4545'))
+		$GUI/LoseScreen/TimeLabel.text = '[center]You lasted ' + str((Time.get_ticks_msec() - timeSnapshot)/1000) + ' seconds.'
+		$GUI/LoseScreen/TimeLabel.remove_theme_color_override('default_color')
+		$GUI/LoseScreen/TimeLabel.add_theme_color_override('default_color', Color('#ff4545'))
 		
-		$LoseScreen/DeathCause.text = '[center]Cause of death: ' + str($Player.lastDmgReason)
+		$GUI/LoseScreen/DeathCause.text = '[center]Cause of death: ' + str($Player.lastDmgReason)
 		
 		$Player.anchored = true
 		$Player.freezeCam = true
 		$Camera2D.position = Vector2(960, 540)
-		$LoseScreen.position = Vector2(0, 0)
+		$GUI/LoseScreen.position = Vector2(0, 0)
 
-		#$LoseScreen/ReturnBtn.grab_focus()
-		await $LoseScreen/ReturnBtn.pressed
+		#$GUI/LoseScreen/ReturnBtn.grab_focus()
+		await $GUI/LoseScreen/ReturnBtn.pressed
 		$Player.anchored = false
-		$LoseScreen.visible = false
+		$GUI/LoseScreen.visible = false
 		inMenu = true
 
 
@@ -140,27 +140,27 @@ func _on_game_win():
 		get_tree().call_group('enemy', 'queue_free')
 		get_tree().call_group('audio', 'queue_free')
 		remove_child($GameMapNode)
-		$GuiContainer.visible = false
+		$GUI/GuiContainer.visible = false
 		add_child(menu)
-		move_child($LoseScreen, -1)
-		$LoseScreen.visible = true
-		$LoseScreen/RichTextLabel.text = '[center]game over!'
-		$LoseScreen/RichTextLabel.remove_theme_color_override('default_color')
-		$LoseScreen/RichTextLabel.add_theme_color_override('default_color', Color('#00FF00'))
+		move_child($GUI/LoseScreen, -1)
+		$GUI/LoseScreen.visible = true
+		$GUI/LoseScreen/RichTextLabel.text = '[center]game over!'
+		$GUI/LoseScreen/RichTextLabel.remove_theme_color_override('default_color')
+		$GUI/LoseScreen/RichTextLabel.add_theme_color_override('default_color', Color('#00FF00'))
 		
-		$LoseScreen/TimeLabel.text = '[center]You spent ' + str((Time.get_ticks_msec() - timeSnapshot)/1000) + ' seconds.'
-		$LoseScreen/TimeLabel.remove_theme_color_override('default_color')
-		$LoseScreen/TimeLabel.add_theme_color_override('default_color', Color('#00FF00'))
+		$GUI/LoseScreen/TimeLabel.text = '[center]You spent ' + str((Time.get_ticks_msec() - timeSnapshot)/1000) + ' seconds.'
+		$GUI/LoseScreen/TimeLabel.remove_theme_color_override('default_color')
+		$GUI/LoseScreen/TimeLabel.add_theme_color_override('default_color', Color('#00FF00'))
 		
-		$LoseScreen/DeathCause.text = ''
+		$GUI/LoseScreen/DeathCause.text = ''
 		
 		$Player.anchored = true
 		$Player.freezeCam = true
 		$Camera2D.position = Vector2(960, 540)
-		$LoseScreen.position = Vector2(0, 0)
+		$GUI/LoseScreen.position = Vector2(0, 0)
 
-		#$LoseScreen/ReturnBtn.grab_focus()
-		await $LoseScreen/ReturnBtn.pressed
+		#$GUI/LoseScreen/ReturnBtn.grab_focus()
+		await $GUI/LoseScreen/ReturnBtn.pressed
 		$Player.anchored = false
-		$LoseScreen.visible = false
+		$GUI/LoseScreen.visible = false
 		inMenu = true
