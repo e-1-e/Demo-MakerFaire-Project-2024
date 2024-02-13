@@ -1019,6 +1019,33 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("4_uouwa")
 
+[node name="ComingSoon" type="RichTextLabel" parent="Menu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 534.0
+offset_top = 984.0
+offset_right = 1434.0
+offset_bottom = 1149.0
+grow_horizontal = 2
+rotation = -0.261799
+scale = Vector2(0.346388, 0.364264)
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]COMING SOON"
+text_direction = 1
+
+[node name="ColorRect" type="ColorRect" parent="Menu/ComingSoon"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 165.0
+color = Color(0.780392, 0.478431, 0, 1)
+
 [node name="Player" parent="." groups=["teleportable"] instance=ExtResource("1_ywcs5")]
 position = Vector2(939, 402)
 scale = Vector2(1.964, 2)
@@ -1028,7 +1055,6 @@ slide_on_ceiling = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
-zoom = Vector2(0.3, 0.3)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 2

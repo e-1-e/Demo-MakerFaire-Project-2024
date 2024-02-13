@@ -94,7 +94,7 @@ func _on_tutorial_door_body_entered(body):
 
 
 func _on_game_door_body_entered(body):
-	currentDoor = 'game'
+	currentDoor = 'tutorial'
 	$Player/ColorRect.color = Color(1, 1, 0, 1)
 
 

@@ -23,7 +23,7 @@ func projectile(target = null, lefty = true, god = false):
 	
 	var newProject = projecty.instantiate()
 	await get_tree().create_timer(1).timeout
-	get_parent().add_child(newProject)
+	get_parent().get_node('Projectiles').add_child(newProject)
 	
 	print('huh huh huh')
 	print(get_parent())
@@ -64,7 +64,7 @@ func projectile(target = null, lefty = true, god = false):
 	elif target != null and newProject != null and get_tree() and newProject.testProp == true:
 		print("YOU CAN GET WHATCHU WANT")
 		var currentDirec = (target.position - newProject.position).normalized() * 5
-		while newProject.get_parent() == get_parent():
+		while newProject.get_parent() == get_parent().get_node('Projectiles'):
 			newProject.position += currentDirec * 4.5/maxProjectileDebounce
 			
 			if not get_tree(): return null
@@ -119,7 +119,12 @@ func daBom():
 	await myTween1.finished
 	
 	var newProjec = await projectile(null, true, true)
-	newProjec.scale *= 25
+	#newProjec.scale *= 25
+	
+	myTween1 = create_tween()
+	myTween1.set_trans(Tween.TRANS_BOUNCE)
+	myTween1.tween_property(newProjec, 'scale', newProjec.scale * 25, 3)
+	await myTween1.finished
 	
 	newProjec.get_node('HeatSeeker').body_shape_entered.connect(func(rid: RID, body: Node2D, bodyShapeIndex: int, localShapeIndex: int):
 		if body.name == 'TileMap':
@@ -127,9 +132,17 @@ func daBom():
 			if tile:
 				body.set_cell(0, tile)
 	)
-	for i in 300:
-		await get_tree().create_timer(0.01).timeout
-		newProjec.position += Vector2(0, 20)
+	
+	myTween1 = create_tween()
+	myTween1.set_trans(Tween.TRANS_ELASTIC)
+	myTween1.tween_property(newProjec, 'position', newProjec.position - (Vector2(0, 20) * 10), (2))
+	await myTween1.finished
+	
+	myTween1 = create_tween()
+	myTween1.tween_property(newProjec, 'position', newProjec.position + (Vector2(0, 20) * 500), (1))
+	myTween1.tween_property(newProjec, 'scale', newProjec.scale * 1.3, (1))
+	await myTween1.finished
+
 	newProjec.queue_free()
 	anchored = false
 

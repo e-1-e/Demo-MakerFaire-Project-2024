@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	pass
 	
-var tutorialEnabled = false
+var tutorialEnabled = true
 var tutorial = [
 	['Welcome, player.'],
 	['This is the tutorial for STERF!'],
