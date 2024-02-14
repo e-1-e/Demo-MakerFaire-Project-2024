@@ -159,3 +159,22 @@ theme_override_font_sizes/normal_font_size = 200
 bbcode_enabled = true
 text = "[center]Grab the Wheel"
 text_direction = 1
+
+[node name="Skipper2" type="Button" parent="."]
+visible = false
+z_index = 365
+layout_mode = 0
+offset_left = 1590.0
+offset_top = 66.0
+offset_right = 2390.0
+offset_bottom = 466.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 100
+text = "SKIP TUTORIAL"
+icon = ExtResource("2_fqi5j")
+flat = true
+icon_alignment = 1
+expand_icon = true

@@ -46,6 +46,7 @@ func speak(talker : String, talk : String):
 			iteration += 1
 			continue
 			
+			
 		if i == '[':
 			var newMatch = checker.search(talk, iteration)
 			if newMatch:
@@ -71,6 +72,8 @@ func speak(talker : String, talk : String):
 func eHide(mode = false):
 	$DialogueBox.visible = mode
 	$SpeakerBox.visible = mode
+	$Skipper2.visible = mode
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -90,17 +90,20 @@ func _process(delta):
 
 func _on_tutorial_door_body_entered(body):
 	currentDoor = 'tutorial'
+	$GUI/DoorPrompt.visible = (currentDoor != '')
 	$Player/ColorRect.color = Color(0, 1, 1, 1)
 
 
 func _on_game_door_body_entered(body):
 	currentDoor = 'tutorial'
+	$GUI/DoorPrompt.visible = (currentDoor != '')
 	$Player/ColorRect.color = Color(1, 1, 0, 1)
 
 
 func _on_game_door_body_exited(body):
 	if body == $Player:
 		currentDoor = ''
+		$GUI/DoorPrompt.visible = (currentDoor != '')
 		$Player/ColorRect.color = Color(0.949, 0, 0.467, 1)
 
 

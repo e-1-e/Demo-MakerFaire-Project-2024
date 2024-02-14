@@ -1153,6 +1153,25 @@ text = "Return"
 visible = false
 z_index = 999
 
+[node name="DoorPrompt" type="RichTextLabel" parent="GUI"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -948.0
+offset_top = 954.0
+offset_right = 977.0
+offset_bottom = 1079.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 65
+bbcode_enabled = true
+text = "[center]Press W to enter."
+text_direction = 1
+
 [connection signal="gameWin" from="." to="." method="_on_game_win"]
 [connection signal="body_entered" from="Menu/TutorialDoor" to="." method="_on_tutorial_door_body_entered"]
 [connection signal="body_exited" from="Menu/TutorialDoor" to="." method="_on_game_door_body_exited"]
