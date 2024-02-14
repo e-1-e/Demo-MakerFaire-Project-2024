@@ -1,6 +1,7 @@
 extends Node
 
 @export var boss : Node2D
+@export var projecty : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,8 @@ var tutorial = [
 ]
 
 var uSkip = false
+
+var projectileBlocks = []
 
 func wake():
 	await get_tree().create_timer(0.1).timeout
@@ -71,3 +74,18 @@ func wake():
 	await get_tree().create_timer(0.1).timeout
 	get_parent().game_time()
 	boss.awake = true
+	
+	for i in $TileMap.get_used_cells(0):
+		if $TileMap.get_cell_atlas_coords(0, i) == Vector2i(2, 3) and $TileMap.get_cell_source_id(0, i) == 1:
+			projectileBlocks.push_front(i)
+	
+	while true:
+		for i in projectileBlocks:
+			var newProject = projecty.instantiate()
+			add_child(newProject)
+			
+			newProject.position = $TileMap.to_global($TileMap.map_to_local(i)) + Vector2(0, 70)
+			newProject.testProp = true
+			newProject.constantTravel(Vector2(0, 10))
+		if not get_tree(): return null
+		await get_tree().create_timer(1).timeout

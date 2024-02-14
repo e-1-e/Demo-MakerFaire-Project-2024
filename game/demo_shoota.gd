@@ -79,6 +79,9 @@ func _on_ready():
 	
 	while true:
 		await get_tree().create_timer(3).timeout
+		if (get_owner().get_parent().get_node('Player').position - position).length() > 100:
+			continue
+		
 		var newProject = projecty.instantiate()
 		get_parent().add_child(newProject)
 		newProject.position = position

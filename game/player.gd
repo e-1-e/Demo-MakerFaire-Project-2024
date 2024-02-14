@@ -161,8 +161,7 @@ func _on_ready():
 		var bodyList = $StompDetector.get_overlapping_bodies()
 		
 		for body in bodyList:
-			print('IM SO YOUNG I COULD F ON YOUR NIECE, OO ' + body.name)
-			if body in get_tree().get_nodes_in_group('enemy') and not anchored and to_global($StompDetector.position).y < body.position.y or self.position.y < body.position.y:
+			if body in get_tree().get_nodes_in_group('enemy') and not anchored and (to_global($StompDetector.position).y < body.position.y or self.position.y < body.position.y):
 				body.change_health(1)
 				
 				
