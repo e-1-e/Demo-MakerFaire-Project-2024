@@ -40,6 +40,11 @@ agenda:
 var prev_rotation
 
 @export var myPathFollow : PathFollow2D
+@export var projecty : PackedScene
+
+func inverseScale():
+	$LegSprite.scale *= Vector2(-1, 1)
+	$BodySprite.scale *= Vector2(-1, 1)
 
 func _physics_process(delta):
 	if get_parent() == null or health == 0:
@@ -56,35 +61,36 @@ func _physics_process(delta):
 	'''
 	
 	#scale = Vector2(2, 2) if get_parent().get_node('enemyPath1').get_node('PathFollow2D').rotation != 0 else Vector2(-2, 2)
-	$AnimatedSprite2D.scale = Vector2(0.184, 0.182) if myPathFollow.rotation != 0 else Vector2(-0.184, 0.182)
+	if myPathFollow.rotation != prev_rotation:
+		inverseScale()
 	
 	prev_rotation = myPathFollow.rotation
 
 func change_health(change):
 	if attackDebounce: return null
+	attackDebounce = true
 	
 	health -= change
 	if health <= 0:
 		queue_free()
 
 func _on_ready():
-	$AnimatedSprite2D.play("new_animation")
+	$LegSprite.play("walk")
+	
+	while true:
+		await get_tree().create_timer(3).timeout
+		var newProject = projecty.instantiate()
+		get_parent().add_child(newProject)
+		newProject.position = position
+		newProject.testProp = true
+		newProject.scale *= 0.8
+		newProject.constantTravel((get_owner().get_parent().get_node('Player').position - position).normalized() * 5)
+		$BodySprite.play("spit")
+		$BodySprite.animation_finished.connect(func():
+			$BodySprite.play("idle")
+		, 4)
 
 var attackDebounce = false
-
-func _on_hitbox_body_entered(body):
-	if body.name == 'Player' and not attackDebounce:
-		print(body.position.y > position.y)
-		print("TELL ME LIL UZI VERT WHY YOU SO DOPE")
-		
-		if health <= 0:
-			return null
-		
-		attackDebounce = true
-		body.changeHealth(1, 'touched a Golem')
-		body.impulse(250, $AnimatedSprite2D.scale.x < 0)
-		await get_tree().create_timer(2).timeout
-		attackDebounce = false
 
 
 '''

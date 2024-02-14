@@ -1,0 +1,94 @@
+[gd_scene load_steps=15 format=3 uid="uid://dvhu877lw3wmb"]
+
+[ext_resource type="Script" path="res://demo_shoota.gd" id="1_5wocm"]
+[ext_resource type="Texture2D" uid="uid://b0xu5iwuey0vv" path="res://assets/demo_shoota/2-14-24-Shooter-LegWalk1.png" id="1_kmm8u"]
+[ext_resource type="Texture2D" uid="uid://okmf84mdjcsy" path="res://assets/demo_shoota/2-14-24-Shooter-LegWalk2.png" id="2_4rxuw"]
+[ext_resource type="Texture2D" uid="uid://dts1ppxgdfxgl" path="res://assets/demo_shoota/2-14-24-Shooter-LegWalk3.png" id="3_2k81n"]
+[ext_resource type="Texture2D" uid="uid://bp5es8mamot8q" path="res://assets/demo_shoota/2-14-24-Shooter-LegWalk4.png" id="4_12u1e"]
+[ext_resource type="Texture2D" uid="uid://dx8wtffipmey6" path="res://assets/demo_shoota/2-14-24-Shooter-LegWalk5.png" id="5_aw4bg"]
+[ext_resource type="Texture2D" uid="uid://be2oli0ppkdyt" path="res://assets/demo_shoota/2-14-24-Shooter-LegWalk6.png" id="6_4mwn1"]
+[ext_resource type="Texture2D" uid="uid://dqmf158mqfjwy" path="res://assets/demo_shoota/2-14-24-Shooter-LegWalk7.png" id="7_54us4"]
+[ext_resource type="Texture2D" uid="uid://cg6upnsetxo1f" path="res://assets/demo_shoota/2-14-24-Shooter-LegWalk8.png" id="8_7ajoq"]
+[ext_resource type="Texture2D" uid="uid://cwbc0ys80jjla" path="res://assets/demo_shoota/2-14-24-Shooter-Spit1.png" id="9_4ga8i"]
+[ext_resource type="Texture2D" uid="uid://buafebp06iv3v" path="res://assets/demo_shoota/2-14-24-Shooter-Spit2.png" id="10_biedr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlle7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kmm8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4rxuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2k81n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_12u1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aw4bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4mwn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_54us4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ajoq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yiror"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_4ga8i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_4ga8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_biedr")
+}],
+"loop": false,
+"name": &"spit",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x7s3"]
+size = Vector2(38, 55.5)
+
+[node name="Shooder" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_5wocm")
+
+[node name="LegSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -2)
+sprite_frames = SubResource("SpriteFrames_qlle7")
+animation = &"walk"
+speed_scale = -1.0
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -2)
+sprite_frames = SubResource("SpriteFrames_yiror")
+animation = &"spit"
+frame_progress = 0.900814
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_3x7s3")
+
+[node name="LeftHandMark" type="Marker2D" parent="."]
+position = Vector2(-28, -3.429)
+
+[connection signal="ready" from="." to="." method="_on_ready"]

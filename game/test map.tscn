@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4eh1ac6occ5b"]
+[gd_scene load_steps=22 format=3 uid="uid://b4eh1ac6occ5b"]
 
 [ext_resource type="Script" path="res://test map.gd" id="1_d4in8"]
 [ext_resource type="Texture2D" uid="uid://c8ehhigf73bqg" path="res://assets/1-11-24-SpriteSheetSample2.png" id="2_2umo5"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://d36schk7vwga4" path="res://12-12-23-Snowball.png" id="8_6e3w7"]
 [ext_resource type="PackedScene" uid="uid://b42lgxkb3ff4a" path="res://demo_boss.tscn" id="8_j4pmm"]
 [ext_resource type="PackedScene" uid="uid://4r1b4qa2mmrs" path="res://portal.tscn" id="10_dme76"]
+[ext_resource type="PackedScene" uid="uid://dvhu877lw3wmb" path="res://demo_shoota.tscn" id="11_f805i"]
+[ext_resource type="PackedScene" uid="uid://bmrs3sf3yc1py" path="res://projectile.tscn" id="12_qfb6v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65vlb"]
 texture = ExtResource("2_2umo5")
@@ -820,6 +822,12 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Curve2D" id="Curve2D_gfdrn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3270, 2064, 0, 0, 0, 0, 2880, 2064, 0, 0, 0, 0, 3270, 2064)
+}
+point_count = 3
+
 [node name="GameMapNode" type="Node" node_paths=PackedStringArray("boss")]
 script = ExtResource("1_d4in8")
 boss = NodePath("DemoBoss")
@@ -906,9 +914,10 @@ scale = Vector2(5.2, 4.8)
 pathContainer = NodePath("../BossStuff")
 health = 10
 
-[node name="Golem" parent="." groups=["enemy"] instance=ExtResource("4_570li")]
+[node name="Golem" parent="." node_paths=PackedStringArray("myPathFollow") groups=["enemy"] instance=ExtResource("4_570li")]
 position = Vector2(1122, 912)
 scale = Vector2(1.71004, 1.83901)
+myPathFollow = NodePath("../enemyPath1/PathFollow2D")
 
 [node name="enemyPath1" type="Path2D" parent="."]
 curve = SubResource("Curve2D_62s04")
@@ -975,5 +984,20 @@ position = Vector2(1506, 1014)
 
 [node name="Projectiles" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
+
+[node name="enemyPath2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gfdrn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="enemyPath2"]
+position = Vector2(2880, 2064)
+rotation = 3.14159
+progress = 390.0
+
+[node name="Shooder" parent="." node_paths=PackedStringArray("myPathFollow") instance=ExtResource("11_f805i")]
+position = Vector2(3270, 2064)
+collision_layer = 6
+collision_mask = 4
+myPathFollow = NodePath("../enemyPath2/PathFollow2D")
+projecty = ExtResource("12_qfb6v")
 
 [connection signal="body_entered" from="SpikeyArea" to="SpikeyArea" method="_on_body_entered"]
