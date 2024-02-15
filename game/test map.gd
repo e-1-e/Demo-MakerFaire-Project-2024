@@ -3,6 +3,10 @@ extends Node
 @export var boss : Node2D
 @export var projecty : PackedScene
 
+var gameRadio = [
+	'res://assets/audio/Level 1/simple.ogg'
+]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -89,3 +93,11 @@ func wake():
 			newProject.constantTravel(Vector2(0, 10))
 		if not get_tree(): return null
 		await get_tree().create_timer(1).timeout
+
+
+func _on_game_audio_1_ready():
+	while true:
+		for i in gameRadio:
+			$gameAudio1.stream = AudioStreamOggVorbis.load_from_file(i)
+			$gameAudio1.play()
+			await $gameAudio1.finished

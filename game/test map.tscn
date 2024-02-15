@@ -1402,7 +1402,6 @@ gizmo_extents = 100.0
 
 [node name="gameAudio1" type="AudioStreamPlayer" parent="." groups=["audio"]]
 stream = ExtResource("5_1xiwc")
-volume_db = -80.0
 
 [node name="SpikeyArea" type="Area2D" parent="."]
 position = Vector2(0, 270)
@@ -1514,4 +1513,5 @@ collision_mask = 4
 myPathFollow = NodePath("../enemyPath2/PathFollow2D")
 projecty = ExtResource("12_qfb6v")
 
+[connection signal="ready" from="gameAudio1" to="." method="_on_game_audio_1_ready"]
 [connection signal="body_entered" from="SpikeyArea" to="SpikeyArea" method="_on_body_entered"]
