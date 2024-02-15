@@ -6,8 +6,8 @@ signal death
 @export var freezeCam = true
 @export var lastDmgReason = ''
 
-const SPEED = 1200.0
-const JUMP_VELOCITY = -900.0
+const SPEED = 1000.0
+const JUMP_VELOCITY = -800.0
 
 var onWall = is_on_wall()
 var anchored = false
@@ -45,7 +45,8 @@ func _physics_process(delta):
 	
 	var newSpeed = SPEED / 2 if Input.is_action_pressed("shift") else SPEED
 	
-	var newGravity = gravity if not (check_for_tiles().onWall and not is_on_floor()) else gravity * 0.5
+	var newGravity = gravity if not (check_for_tiles().onWall and not is_on_floor() and velocity.y > 0) else gravity * 0.5
+	newGravity *= 1.25
 	
 	if not anchored:
 		if not is_on_floor():

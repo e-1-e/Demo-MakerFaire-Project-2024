@@ -56,7 +56,7 @@ func _process(delta):
 		print(currentDoor)
 		if currentDoor == 'tutorial' and not doorDebounce:
 			doorDebounce = true
-			await get_tree().create_timer(1).timeout
+			#await get_tree().create_timer(1).timeout
 			var newScee = TutorialLevel.instantiate()
 			add_child(newScee)
 			$Player.position = newScee.get_node('PlayerSpawn').position
@@ -71,7 +71,7 @@ func _process(delta):
 			
 		if currentDoor == 'game' and not doorDebounce:
 			doorDebounce = true
-			await get_tree().create_timer(1).timeout
+			#await get_tree().create_timer(1).timeout
 			var newScee = GameLevel.instantiate()
 			add_child(newScee)
 			$Player.position = newScee.get_node('PlayerSpawn').position

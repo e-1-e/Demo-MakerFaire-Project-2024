@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b42lgxkb3ff4a"]
+[gd_scene load_steps=19 format=3 uid="uid://b42lgxkb3ff4a"]
 
 [ext_resource type="Texture2D" uid="uid://ddkwx7372fpc5" path="res://assets/demo_boss/1-24-24-DemoBoss-LegWalk1.png" id="1_aw1yk"]
 [ext_resource type="Script" path="res://demo_boss.gd" id="1_u22d5"]
@@ -73,7 +73,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtfr8"]
-size = Vector2(53, 59)
+size = Vector2(51.5, 54.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfbr"]
+size = Vector2(55.7143, 38.5715)
 
 [node name="DemoBoss" type="CharacterBody2D"]
 scale = Vector2(1.4, 1.4)
@@ -93,7 +96,18 @@ animation = &"punch"
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.749999, -2.25)
 shape = SubResource("RectangleShape2D_rtfr8")
 
 [node name="LeftHandMark" type="Marker2D" parent="."]
 position = Vector2(-25, -1.429)
+
+[node name="Aura" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Aura"]
+position = Vector2(-1.42857, 7.85714)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_qjfbr")
+debug_color = Color(0.964706, 0, 0.498039, 0.419608)
+
+[connection signal="body_shape_entered" from="Aura" to="." method="_on_aura_body_shape_entered"]

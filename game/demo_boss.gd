@@ -272,3 +272,17 @@ ok planning the next feature!!!!!!!!!! yay
 
 feature: i give up lmfaooooooooooooooooooooo
 '''
+
+var attackDebounce = false
+func _on_aura_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if body.name == 'Player' and not attackDebounce:
+		print(body.position.y > position.y)
+		
+		if health <= 0:
+			return null
+		
+		attackDebounce = true
+		body.changeHealth(1, 'could not withstand the aura')
+		body.impulse(250, body.position.x > position.x)
+		await get_tree().create_timer(2).timeout
+		attackDebounce = false

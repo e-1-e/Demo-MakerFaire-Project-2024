@@ -37,7 +37,7 @@ agenda:
 	- add additional positional check to player attack
 '''
 
-var prev_rotation
+var prev_rotation = 0
 
 @export var myPathFollow : PathFollow2D
 @export var projecty : PackedScene
@@ -54,6 +54,8 @@ func _physics_process(delta):
 	position = myPathFollow.position
 	#print(position)
 	myPathFollow.progress_ratio += 0.001
+	print(myPathFollow.progress_ratio)
+	print(int(myPathFollow.progress_ratio * 10))
 	
 	'''
 	if get_parent().get_node('enemyPath1').get_node('PathFollow2D').rotation != prev_rotation:
@@ -61,10 +63,9 @@ func _physics_process(delta):
 	'''
 	
 	#scale = Vector2(2, 2) if get_parent().get_node('enemyPath1').get_node('PathFollow2D').rotation != 0 else Vector2(-2, 2)
-	if myPathFollow.rotation != prev_rotation:
+	if (int(myPathFollow.progress_ratio * 10) == 5 and prev_rotation != 5) or (int(myPathFollow.progress_ratio * 10) == 0 and prev_rotation != 0):
 		inverseScale()
-	
-	prev_rotation = myPathFollow.rotation
+		prev_rotation = int(myPathFollow.progress_ratio * 10)
 
 func change_health(change):
 	if attackDebounce: return null
@@ -76,10 +77,14 @@ func change_health(change):
 
 func _on_ready():
 	$LegSprite.play("walk")
+	prev_rotation = myPathFollow.rotation
+	inverseScale()
 	
 	while true:
-		await get_tree().create_timer(3).timeout
-		if (get_owner().get_parent().get_node('Player').position - position).length() > 100:
+		await get_tree().create_timer(1.85).timeout
+		print('U TELLIN ME U FALLIN OUTTA LUV W ME')
+		print((get_owner().get_parent().get_node('Player').position - position).length())
+		if (get_owner().get_parent().get_node('Player').position - position).length() > 800:
 			continue
 		
 		var newProject = projecty.instantiate()
