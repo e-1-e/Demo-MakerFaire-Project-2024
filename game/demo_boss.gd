@@ -123,7 +123,7 @@ func daBom():
 	
 	myTween1 = create_tween()
 	myTween1.set_trans(Tween.TRANS_BOUNCE)
-	myTween1.tween_property(newProjec, 'scale', newProjec.scale * 15, 3)
+	myTween1.tween_property(newProjec, 'scale', newProjec.scale * 25, 3)
 	await myTween1.finished
 	
 	newProjec.get_node('HeatSeeker').body_shape_entered.connect(func(rid: RID, body: Node2D, bodyShapeIndex: int, localShapeIndex: int):
@@ -131,6 +131,8 @@ func daBom():
 			var tile = body.get_coords_for_body_rid(rid)
 			if tile:
 				body.set_cell(0, tile)
+				body.set_cell(1, tile)
+			
 				
 		if body.name == 'Player':
 			body.changeHealth(9999, "Incineration by Lava")
@@ -222,17 +224,17 @@ func change_health(change):
 		
 		if health == 8:
 			invertX *= 1.2
-			walkSpeed *= 1.25
+			walkSpeed *= 1.5
 			maxProjectileDebounce *= 0.9
 			downwardsBeam()
 		elif health == 5:
 			invertX *= 2
 			walkSpeed *= 1.35
-			maxProjectileDebounce *= 0.8
+			maxProjectileDebounce *= 0.7
 		elif health == 2:
 			invertX *= 4
-			walkSpeed *= 1.6
-			maxProjectileDebounce *= 0.8
+			walkSpeed *= 1.3
+			maxProjectileDebounce *= 0.6
 			daBom()
 		
 		if health <= 0:
