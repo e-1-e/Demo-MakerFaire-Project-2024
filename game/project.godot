@@ -13,6 +13,8 @@ config_version=5
 config/name="roblox is better orn aw"
 run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/image="res://assets/2-7-24-DemoLogo.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [debug]
