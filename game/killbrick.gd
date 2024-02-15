@@ -15,7 +15,9 @@ func _on_body_entered(body):
 	print('VAMP ANThEM!')
 	print("VV" + body.name + "3")
 	
-	if body.name == 'Player':
+	if not get_tree(): return
+	
+	if body.name == 'Player' and get_parent().get_parent().inMenu == false:
 		print('yeuh!')
 		body.changeHealth(9999999, 's p i k e')
 		body.death.emit()

@@ -89,7 +89,7 @@ func _on_ready():
 		
 		var newProject = projecty.instantiate()
 		get_parent().add_child(newProject)
-		newProject.position = position
+		newProject.position = position - Vector2(0, 10)
 		newProject.testProp = true
 		newProject.scale *= 0.8
 		newProject.constantTravel((get_owner().get_parent().get_node('Player').position - position).normalized() * 5)

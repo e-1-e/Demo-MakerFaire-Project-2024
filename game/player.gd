@@ -102,7 +102,11 @@ func _on_death():
 	health = 5
 	changeHealth(0)
 	
+var invincibility = true
+	
 func changeHealth(change, reason = ''):
+	if invincibility == true: return
+	
 	health -= change
 	print(health)
 	

@@ -56,7 +56,9 @@ func _process(delta):
 		print(currentDoor)
 		if currentDoor == 'tutorial' and not doorDebounce:
 			doorDebounce = true
+			#$Player.health = 99932952583232
 			#await get_tree().create_timer(1).timeout
+			$Player.invincibility = true
 			var newScee = TutorialLevel.instantiate()
 			add_child(newScee)
 			$Player.position = newScee.get_node('PlayerSpawn').position
@@ -68,6 +70,9 @@ func _process(delta):
 			
 			inMenu = false
 			doorDebounce = false
+			await get_tree().create_timer(1).timeout
+			$Player.invincibility = false
+			
 			
 		if currentDoor == 'game' and not doorDebounce:
 			doorDebounce = true
