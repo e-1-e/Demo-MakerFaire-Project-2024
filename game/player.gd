@@ -29,11 +29,14 @@ func check_for_tiles():
 		onWall = (tile1 != false) or (tile2 != false),
 		wallDir = null if (tile1 == false) and (tile2 == false) else ('right' if tile1 != true else 'left')
 	}
+var wallJumpDebounce = false
 
 func _physics_process(delta):
 	# Add the gravity.
 	if health <= 0:
 		death.emit()
+		
+
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
@@ -46,7 +49,7 @@ func _physics_process(delta):
 	var newSpeed = SPEED / 2 if Input.is_action_pressed("shift") else SPEED
 	
 	var newGravity = gravity if not (check_for_tiles().onWall and not is_on_floor() and velocity.y > 0) else gravity * 0.5
-	newGravity *= 1.25
+	newGravity *= 1.5
 	
 	if not anchored:
 		if not is_on_floor():
@@ -68,12 +71,15 @@ func _physics_process(delta):
 				
 				#Handle wall-jump.
 				if not $StompDetector.has_overlapping_bodies():
+					if wallJumpDebounce: return
+					wallJumpDebounce = true
 					velocity.x += newSpeed * (-1.5 if check_for_tiles().wallDir == 'right' else 1.5)
 					for i in range(25):
 						await get_tree().create_timer(0.01).timeout
 						velocity.x *= 0.87
 						velocity.y -= -25 * (i+1) + 937.5
 						move_and_slide()
+					wallJumpDebounce = false
 				else:
 					print("slatt! slatt! slatt! slatt!")
 				onWall = false

@@ -25,9 +25,7 @@ var tutorial = [
 	['Press SPACE to jump.'],
 	['Hold SHIFT to move slower.'],
 	['Finally,[0.4] press SPACE to jump off walls while touching a wall.'],
-	['Around the map, there are several things to find.'],
-	['You may find important tools and potions (currently not available)[0.4], but you may also find other enemies around,[0.1] or you may even find the boss room!'],
-	['If you do find an enemy,[0.4] jump on their head to hurt them.'],
+	['If you find an enemy,[0.4] jump on their head to hurt them.'],
 	['Alright player,[0.4] good luck!']
 ]
 
@@ -52,6 +50,10 @@ func wake():
 			get_parent().get_node('GUI').get_node('GuiContainer').get_node('Skipper2').pressed.connect(func():
 				print('Different Dayyyyyy')
 				uSkip = true
+				
+				if not get_parent():
+					return
+				
 				get_parent().get_node('GUI').get_node('GuiContainer').eHide()
 				get_parent().get_node('GUI').get_node('GuiContainer').get_node('HeartGrid').visible = true
 				get_parent().get_node('GUI').get_node('GuiContainer').get_node('TimeLabel').visible = true
